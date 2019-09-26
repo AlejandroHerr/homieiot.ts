@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  mqtt_server:
+    image: eclipse-mosquitto:latest
+    restart: always
+  node_app:
+    image: node:lts
+    depends_on:
+      - mqtt_server
+    environment:
+      - NODE_ENV=testing
+      - MQTT_PORT=1883
+      - MQTT_PROTOCOL=mqtt
+      - MQTT_HOST=mqtt_server
+      - MQTT_CLIENT_NAME=homie_dev
+    tty: true
+    working_dir: /homie
+    volumes:
+      - 'node_modules:/homie/node_modules'
+      - '../docker/scripts:/homie/docker/scripts'
+      - '../example:/homie/example'
+      - '../src/:/homie/src'
+      - '../nodemon.json:/homie/nodemon.json'
+      - '../package.json:/homie/package.json'
+      - '../tsconfig.json:/homie/tsconfig.json'
+      - '../yarn.lock:/homie/yarn.lock'
+    command: ['/bin/sh', './docker/scripts/installAndDevWatch.sh']
+
+volumes:
+  node_modules:

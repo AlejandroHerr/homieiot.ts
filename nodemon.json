@@ -1,0 +1,12 @@
+{
+  "restartable": "rs",
+  "ignore": [".git", "node_modules/**/node_modules"],
+  "verbose": true,
+  "exec": "ts-node --files ./example/index.ts",
+  "watch": ["src", "example"],
+  "signal": "SIGINT",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "ts"
+}
