@@ -51,7 +51,7 @@ jobs:
       - *step_attach_workspace
       - run:
           name: Test
-          command: 'yarn jest --ci'
+          command: 'yarn jest --ci --passWithNoTests'
   lint:
     <<: *defaults
     steps:
