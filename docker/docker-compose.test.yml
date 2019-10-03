@@ -1,33 +1,33 @@
-version: "3.4"
+version: '3.4'
 
 services:
-  mosquitto:
+  mqtt_server:
     image: eclipse-mosquitto:latest
     restart: always
   node_app:
     image: node:lts
     depends_on:
-      - mosquitto
+      - mqtt_server
     environment:
-      - NODE_ENV=testing
+      - NODE_ENV=development
       - MQTT_PORT=1883
       - MQTT_PROTOCOL=mqtt
-      - MQTT_HOST=mosquitto
+      - MQTT_HOST=mqtt_server
     stdin_open: true
     tty: true
     working_dir: /homie
     volumes:
-      - "node_modules:/homie/node_modules"
-      - "../.git:/homie/.git"
-      - "../coverage:/homie/coverage"
-      - "../docker/scripts:/homie/docker/scripts"
-      - "../src:/homie/src"
-      - "../.gitignore:/homie/.gitignore"
-      - "../jest.config.js:/homie/jest.config.js"
-      - "../package.json:/homie/package.json"
-      - "../tsconfig.json:/homie/tsconfig.json"
-      - "../yarn.lock:/homie/yarn.lock"
-    entrypoint: ["/bin/sh"]
+      - 'node_modules:/homie/node_modules'
+      - '../.git:/homie/.git'
+      - '../coverage:/homie/coverage'
+      - '../docker/scripts:/homie/docker/scripts'
+      - '../src:/homie/src'
+      - '../.gitignore:/homie/.gitignore'
+      - '../jest.config.js:/homie/jest.config.js'
+      - '../package.json:/homie/package.json'
+      - '../tsconfig.json:/homie/tsconfig.json'
+      - '../yarn.lock:/homie/yarn.lock'
+    entrypoint: ['/bin/sh']
 
 volumes:
   node_modules:
