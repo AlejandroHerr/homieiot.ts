@@ -6,10 +6,11 @@ module.exports = {
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
-    'plugin:prettier/recommended',
     'airbnb-typescript/base',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'prettier',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
   ],
   globals: {
     Atomics: 'readonly',
@@ -22,5 +23,7 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   rules: {
     'object-shorthand': 'error',
+    'max-len': ['error', { code: 120 }],
+    '@typescript-eslint/ban-ts-ignore': 'warn',
   },
 };
