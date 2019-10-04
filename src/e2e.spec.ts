@@ -2,7 +2,7 @@ import waitForExpect from 'wait-for-expect';
 import { AsyncMqttClient } from 'async-mqtt';
 
 import HomieController from './homie/application/HomieController';
-import asyncConnect from './infrastructure/mqtt';
+import asyncConnect from './core/infrastructure/asyncConnect';
 
 const mqttOptions = {
   host: process.env.MQTT_HOST as string,
@@ -22,7 +22,7 @@ const setupMqttMessageSpy = (): { mqttMessageSpy: jest.Mock<void, [string, strin
 };
 
 beforeAll(async () => {
-  mqttClient = await asyncConnect({ options: { ...mqttOptions, resubscribe: false } });
+  mqttClient = await asyncConnect({ ...mqttOptions, resubscribe: false });
 });
 afterAll(async () => {
   await mqttClient.end();

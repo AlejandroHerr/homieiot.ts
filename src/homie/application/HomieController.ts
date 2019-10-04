@@ -8,12 +8,13 @@ import HomiePublisher from '../services/HomiePublisher';
 import publishDeviceUseCase from '../useCases/publishDeviceUseCase';
 
 import DeviceController from './DeviceController';
+import MqttConnectionManager from '../../core/infrastructure/MqttConnectionManager';
 
 export default class HomieController {
   private homiePublisher: HomiePublisher;
 
-  constructor({ mqttOptions }: { mqttOptions: Partial<IClientOptions> }) {
-    this.homiePublisher = HomiePublisher.create({ options: mqttOptions });
+  constructor({ homiePublisher }: { homiePublisher: HomiePublisher }) {
+    this.homiePublisher = homiePublisher;
   }
 
   public async createDevice(deviceProps: DevicePropsDTO): Promise<DeviceController> {
@@ -29,6 +30,8 @@ export default class HomieController {
   }
 
   static create({ mqttOptions }: { mqttOptions: Partial<IClientOptions> }): HomieController {
-    return new HomieController({ mqttOptions });
+    const mqttConnectionManager = MqttConnectionManager.create({ options: mqttOptions });
+    const homiePublisher = HomiePublisher.create({ mqttConnectionManager });
+    return new HomieController({ homiePublisher });
   }
 }

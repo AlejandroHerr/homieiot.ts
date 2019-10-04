@@ -1,12 +1,15 @@
-import { connect, IClientOptions } from 'mqtt';
+import { connect } from 'mqtt';
 import { AsyncClient, IMqttClient } from 'async-mqtt';
 
-const asyncConnect = ({ options }: { options?: IClientOptions }): Promise<AsyncClient> => {
+import MqttClient from './MqttClient';
+import MqttClientOptions from './MqttClientOptions';
+
+const asyncConnect = (options: Partial<MqttClientOptions> = {}): Promise<MqttClient> => {
   const client = connect(options);
 
   const asyncClient = new AsyncClient(client as IMqttClient);
 
-  return new Promise<AsyncClient>((resolve, reject): void => {
+  return new Promise<MqttClient>((resolve, reject): void => {
     const onError = (error: Error): void => {
       reject(error);
     };
