@@ -17,6 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "@types/node": "^12.7.5",
+    "async-mqtt": "^2.4.2",
+    "mqtt": "^3.0.0",
     "typescript": "^3.6.3"
   },
   "devDependencies": {
@@ -35,7 +37,8 @@
     "prettier": "1.18.2",
     "semantic-release": "15.13.24",
     "ts-jest": "24.1.0",
-    "ts-node": "8.4.1"
+    "ts-node": "8.4.1",
+    "wait-for-expect": "^3.0.0"
   },
   "scripts": {
     "build": "run-s clean && run-p build:*",

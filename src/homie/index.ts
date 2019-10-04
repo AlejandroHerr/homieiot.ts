@@ -1,4 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-import { HomieController } from './homie';
+import HomieController from './application/HomieController';
 
 export { HomieController };
