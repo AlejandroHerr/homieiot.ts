@@ -4,11 +4,11 @@ import Result from '../../core/logic/Result';
 import generateUUID from './generateUUID';
 import Node from './Node';
 
-export interface DeviceIdProps {
+export interface RequiredDeviceProps {
   deviceId: string;
 }
 
-export interface DeviceAttributesProps {
+export interface OptionalDeviceProps {
   homie: string;
   name: string;
   state: 'init' | 'ready' | 'disconnected' | 'sleeping' | 'lost' | 'alert';
@@ -16,9 +16,9 @@ export interface DeviceAttributesProps {
   extensions: string;
 }
 
-export interface DeviceProps extends DeviceIdProps, DeviceAttributesProps {}
+export interface DeviceProps extends RequiredDeviceProps, OptionalDeviceProps {}
 
-const defaultProps: DeviceAttributesProps = {
+const defaultProps: OptionalDeviceProps = {
   homie: '4.0.0',
   name: '',
   state: 'ready',
@@ -67,7 +67,7 @@ export default class Device extends Entity<DeviceProps> {
     return Result.ok();
   }
 
-  static create(deviceProps: DeviceIdProps & Partial<DeviceAttributesProps>): Result<Device> {
+  static create(deviceProps: RequiredDeviceProps & Partial<OptionalDeviceProps>): Result<Device> {
     const id = generateUUID(deviceProps);
 
     const device = new Device({ ...defaultProps, ...deviceProps }, id);

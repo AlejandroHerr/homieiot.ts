@@ -5,20 +5,20 @@ import generateUUID from './generateUUID';
 import Property from './Property';
 import nodeSchema from './validation/nodeSchema';
 
-interface RequiredProps {
+interface RequiredNodeProps {
   deviceId: string;
   nodeId: string;
 }
 
-interface OptionalProps {
+interface OptionalNodeProps {
   name: string;
   type: string;
   properties: Property[];
 }
 
-export interface NodeProps extends RequiredProps, OptionalProps {}
+export interface NodeProps extends RequiredNodeProps, OptionalNodeProps {}
 
-const defaultProps: OptionalProps = {
+const defaultProps: OptionalNodeProps = {
   name: '',
   type: '',
   properties: [],
@@ -45,7 +45,7 @@ export default class Node extends Entity<NodeProps> {
     return this.props.properties;
   }
 
-  static create(nodeProps: RequiredProps & Partial<OptionalProps>): Result<Node> {
+  static create(nodeProps: RequiredNodeProps & Partial<OptionalNodeProps>): Result<Node> {
     const props = { ...defaultProps, ...nodeProps };
     const propsValidationResult = nodeSchema.validate(props, { convert: false });
 

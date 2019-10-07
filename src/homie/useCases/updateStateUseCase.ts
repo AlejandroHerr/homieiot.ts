@@ -3,15 +3,13 @@ import Result from '../../core/logic/Result';
 import Device from '../domain/Device';
 import HomiePublisher from '../services/HomiePublisher';
 
-const updateStateUseCase = async ({
-  device,
-  homiePublisher,
-  state,
-}: {
+interface UpdateStateUseCaseDTO {
   device: Device;
-  homiePublisher: HomiePublisher;
   state: Device['state'];
-}): Promise<Result<void>> => {
+  homiePublisher: HomiePublisher;
+}
+
+const updateStateUseCase = async ({ device, state, homiePublisher }: UpdateStateUseCaseDTO): Promise<Result<void>> => {
   const updateResult = device.updateState(state);
 
   if (updateResult.failed()) {

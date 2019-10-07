@@ -3,13 +3,12 @@ import Result from '../../core/logic/Result';
 import Device from '../domain/Device';
 import HomiePublisher from '../services/HomiePublisher';
 
-const disconnectUseCase = async ({
-  device,
-  homiePublisher,
-}: {
+interface DisconnectUseCaseDTO {
   device: Device;
   homiePublisher: HomiePublisher;
-}): Promise<Result<void>> => {
+}
+
+const disconnectUseCase = async ({ device, homiePublisher }: DisconnectUseCaseDTO): Promise<Result<void>> => {
   const disconnectResult = await homiePublisher.disconnect(device);
 
   if (disconnectResult.failed()) {

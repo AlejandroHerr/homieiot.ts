@@ -6,25 +6,24 @@ import generateUUID from './generateUUID';
 import propertyValueSchema from './validation/propertyValueSchema';
 import propertySchema from './validation/propertySchema';
 
-export interface PropertyIdProps {
+export interface RequiredPropertyProps {
   deviceId: string;
   nodeId: string;
   propertyId: string;
+  datatype: Datatype;
 }
 
-export interface PropertyAttributesProps {
+export interface OptionalNodeProps {
   name: string;
-  datatype: Datatype;
   settable: boolean;
   retained: boolean;
   unit?: string;
-}
-
-export interface PropertyProps extends PropertyIdProps, PropertyAttributesProps {
   value: string | number | boolean;
 }
 
-const defaultProps = {
+export interface PropertyProps extends RequiredPropertyProps, OptionalNodeProps {}
+
+const defaultProps: OptionalNodeProps = {
   name: '',
   settable: false,
   retained: true,
@@ -80,16 +79,7 @@ export default class Property extends Entity<PropertyProps> {
     return Result.ok();
   }
 
-  static create(
-    propertyProps: PropertyIdProps & {
-      name?: string;
-      datatype: Datatype;
-      settable?: boolean;
-      retained?: boolean;
-      unit?: string;
-      value?: string | number | boolean;
-    },
-  ): Result<Property> {
+  static create(propertyProps: RequiredPropertyProps & Partial<OptionalNodeProps>): Result<Property> {
     const props = { ...defaultProps, ...propertyProps };
     const propsValidationResult = propertySchema.validate(props, { convert: false });
 

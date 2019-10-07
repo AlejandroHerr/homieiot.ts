@@ -2,14 +2,16 @@ import Result from '../../core/logic/Result';
 
 import Device from '../domain/Device';
 import HomiePublisher from '../services/HomiePublisher';
+import DevicePropsDTO from '../dto/DevicePropsDTO';
 
+interface PublishDeviceUseCaseDTO {
+  deviceProps: DevicePropsDTO;
+  homiePublisher: HomiePublisher;
+}
 const publishDeviceUseCase = async ({
   deviceProps,
   homiePublisher,
-}: {
-  deviceProps: { deviceId: string; name?: string };
-  homiePublisher: HomiePublisher;
-}): Promise<Result<Device>> => {
+}: PublishDeviceUseCaseDTO): Promise<Result<Device>> => {
   const deviceOrError = Device.create(deviceProps);
 
   if (deviceOrError.failed()) {
