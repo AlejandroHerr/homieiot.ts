@@ -5,15 +5,13 @@ import Node from '../domain/Node';
 import NodePropsDTO from '../dto/NodePropsDTO';
 import HomiePublisher from '../services/HomiePublisher';
 
-const addNodeUseCase = async ({
-  device,
-  nodeProps,
-  homiePublisher,
-}: {
+interface AddNodeUseCaseDTO {
   device: Device;
   nodeProps: NodePropsDTO;
   homiePublisher: HomiePublisher;
-}): Promise<Result<void>> => {
+}
+
+const addNodeUseCase = async ({ device, nodeProps, homiePublisher }: AddNodeUseCaseDTO): Promise<Result<void>> => {
   const nodeOrError = Node.create({ deviceId: device.deviceId, ...nodeProps });
 
   if (nodeOrError.failed()) {

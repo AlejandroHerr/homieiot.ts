@@ -3,21 +3,22 @@ import Result from '../../core/logic/Result';
 
 import generateUUID from './generateUUID';
 import Property from './Property';
+import nodeSchema from './validation/nodeSchema';
 
-export interface NodeIdProps {
+interface RequiredProps {
   deviceId: string;
   nodeId: string;
 }
 
-export interface NodeAttributesProps {
+interface OptionalProps {
   name: string;
   type: string;
   properties: Property[];
 }
 
-export interface NodeProps extends NodeIdProps, NodeAttributesProps {}
+export interface NodeProps extends RequiredProps, OptionalProps {}
 
-const defaultProps: NodeAttributesProps = {
+const defaultProps: OptionalProps = {
   name: '',
   type: '',
   properties: [],
@@ -44,11 +45,16 @@ export default class Node extends Entity<NodeProps> {
     return this.props.properties;
   }
 
-  static create(nodeProps: NodeIdProps & Partial<NodeAttributesProps>): Result<Node> {
+  static create(nodeProps: RequiredProps & Partial<OptionalProps>): Result<Node> {
+    const props = { ...defaultProps, ...nodeProps };
+    const propsValidationResult = nodeSchema.validate(props, { convert: false });
+
+    if (propsValidationResult.error) {
+      return Result.fail(propsValidationResult.error);
+    }
+
     const id = generateUUID(nodeProps);
 
-    const node = new Node({ ...defaultProps, ...nodeProps }, id);
-
-    return Result.ok(node);
+    return Result.ok(new Node({ ...defaultProps, ...nodeProps }, id));
   }
 }

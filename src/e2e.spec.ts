@@ -35,7 +35,7 @@ describe('homie.ts', () => {
 
       const homieController = HomieController.create({ mqttOptions });
 
-      const deviceProps = { deviceId: 'testDevice0', name: 'Device for Testing' };
+      const deviceProps = { deviceId: 'testdevice0', name: 'Device for Testing' };
 
       const deviceController = await homieController.createDevice(deviceProps);
 
@@ -55,7 +55,7 @@ describe('homie.ts', () => {
 
       const homieController = HomieController.create({ mqttOptions });
 
-      const deviceProps = { deviceId: 'testDevice1', name: 'Device for Testing' };
+      const deviceProps = { deviceId: 'testdevice1', name: 'Device for Testing' };
 
       const deviceController = await homieController.createDevice(deviceProps);
 
@@ -75,8 +75,8 @@ describe('homie.ts', () => {
 
       const homieController = HomieController.create({ mqttOptions });
 
-      const deviceProps = { deviceId: 'testDevice2', name: 'Device for Testing' };
-      const nodeProps = { nodeId: 'testNode2', name: 'Node for Testing', type: 'test' };
+      const deviceProps = { deviceId: 'testdevice2', name: 'Device for Testing' };
+      const nodeProps = { nodeId: 'testnode2', name: 'Node for Testing', type: 'test' };
 
       const deviceController = await homieController.createDevice(deviceProps);
 

@@ -1,5 +1,8 @@
-import { NodeAttributesProps } from '../domain/Node';
+import Property from '../domain/Property';
 
-export default interface NodePropsDTO extends Partial<NodeAttributesProps> {
+export default interface NodePropsDTO {
   nodeId: string;
+  name?: string;
+  type?: string;
+  properties?: Property[];
 }
