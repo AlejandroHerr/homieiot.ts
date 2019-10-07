@@ -1,5 +1,5 @@
 import Joi from '@hapi/joi';
-import Datatype from '../Datatype';
+
 import homieIdSchema from './homieIdSchema';
 import Property from '../Property';
 
