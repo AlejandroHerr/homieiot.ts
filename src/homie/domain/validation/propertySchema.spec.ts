@@ -2,7 +2,7 @@ import Datatype from '../Datatype';
 
 import propertySchema from './propertySchema';
 
-describe('homie/domain/Property', () => {
+describe('homie/domain/validation/propertySchema', () => {
   test('should validate the props except value', () => {
     expect(
       propertySchema.validate(
