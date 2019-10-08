@@ -3,6 +3,9 @@ import Result from '../../core/logic/Result';
 
 import generateUUID from './generateUUID';
 import Node from './Node';
+import deviceStateSchema from './validation/deviceStateSchema';
+import deviceSchema from './validation/deviceSchema';
+import deviceNodeSchema from './validation/deviceNodeSchema';
 
 export interface RequiredDeviceProps {
   deviceId: string;
@@ -52,8 +55,14 @@ export default class Device extends Entity<DeviceProps> {
   }
 
   addNode(node: Node): Result<void> {
+    const validationResult = deviceNodeSchema.validate(node, { convert: false });
+
+    if (validationResult.error) {
+      return Result.fail(validationResult.error);
+    }
+
     if (this.nodes.some(({ id }) => node.id === id)) {
-      Result.fail(`Node ${node.id} already exists in ${this.deviceId}`);
+      return Result.fail(`Node ${node.id} already exists in ${this.deviceId}`);
     }
 
     this.nodes.push(node);
@@ -61,17 +70,27 @@ export default class Device extends Entity<DeviceProps> {
     return Result.ok();
   }
 
-  updateState(state: DeviceProps['state']): Result<void> {
+  setState(state: DeviceProps['state']): Result<void> {
+    const validationResult = deviceStateSchema.validate(state, { convert: false });
+
+    if (validationResult.error) {
+      return Result.fail(validationResult.error);
+    }
+
     this.props.state = state;
 
     return Result.ok();
   }
 
   static create(deviceProps: RequiredDeviceProps & Partial<OptionalDeviceProps>): Result<Device> {
-    const id = generateUUID(deviceProps);
+    const propsOrError = deviceSchema.validate<DeviceProps>({ ...defaultProps, ...deviceProps });
 
-    const device = new Device({ ...defaultProps, ...deviceProps }, id);
+    if (propsOrError.error) {
+      return Result.fail(propsOrError.error);
+    }
 
-    return Result.ok(device);
+    const id = generateUUID(propsOrError.value);
+
+    return Result.ok(new Device(propsOrError.value, id));
   }
 }

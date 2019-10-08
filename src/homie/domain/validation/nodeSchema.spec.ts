@@ -9,7 +9,6 @@ describe('homie/domain/validation/nodeSchema', () => {
         {
           deviceId: 'deviceid',
           nodeId: 'nodeid',
-
           name: 'My Node',
           type: 'test',
           properties: [],
@@ -23,7 +22,6 @@ describe('homie/domain/validation/nodeSchema', () => {
         {
           deviceId: 'deviceid',
           nodeId: 'nodeid',
-
           name: 'My Node',
           type: 'test',
           // @ts-ignore
@@ -32,5 +30,23 @@ describe('homie/domain/validation/nodeSchema', () => {
         { convert: false, abortEarly: false },
       ),
     ).not.toHaveProperty('error', expect.any(Error));
+
+    const validateResult = nodeSchema.validate(
+      {
+        deviceId: 'deviceId',
+        nodeId: 'nodeId',
+        type: 5,
+        properties: [{}],
+      },
+      { convert: false, abortEarly: false },
+    );
+
+    expect(validateResult).toHaveProperty('error', expect.any(Error));
+
+    expect(validateResult.error.details.find(({ path }) => path.includes('deviceId'))).toBeTruthy();
+    expect(validateResult.error.details.find(({ path }) => path.includes('nodeId'))).toBeTruthy();
+    expect(validateResult.error.details.find(({ path }) => path.includes('name'))).toBeTruthy();
+    expect(validateResult.error.details.find(({ path }) => path.includes('type'))).toBeTruthy();
+    expect(validateResult.error.details.find(({ path }) => path.includes('properties'))).toBeTruthy();
   });
 });

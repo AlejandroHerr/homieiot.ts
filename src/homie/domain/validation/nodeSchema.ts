@@ -4,8 +4,8 @@ import homieIdSchema from './homieIdSchema';
 import Property from '../Property';
 
 export default Joi.object({
-  deviceId: homieIdSchema,
-  nodeId: homieIdSchema,
+  deviceId: homieIdSchema.required(),
+  nodeId: homieIdSchema.required(),
   name: Joi.string()
     .allow('')
     .required(),

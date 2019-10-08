@@ -10,7 +10,7 @@ interface UpdateStateUseCaseDTO {
 }
 
 const updateStateUseCase = async ({ device, state, homiePublisher }: UpdateStateUseCaseDTO): Promise<Result<void>> => {
-  const updateResult = device.updateState(state);
+  const updateResult = device.setState(state);
 
   if (updateResult.failed()) {
     return Result.fail(updateResult.error);

@@ -3,9 +3,9 @@ import Datatype from '../Datatype';
 import homieIdSchema from './homieIdSchema';
 
 export default Joi.object({
-  deviceId: homieIdSchema,
-  nodeId: homieIdSchema,
-  propertyId: homieIdSchema,
+  deviceId: homieIdSchema.required(),
+  nodeId: homieIdSchema.required(),
+  propertyId: homieIdSchema.required(),
   name: Joi.string()
     .allow('')
     .required(),
