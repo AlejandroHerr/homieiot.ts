@@ -22,8 +22,15 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    'object-shorthand': 'error',
     'max-len': ['error', { code: 120 }],
     '@typescript-eslint/ban-ts-ignore': 'warn',
   },
+  overrides: [
+    {
+      files: ['**/*.spec.ts'],
+      rules: {
+        '@typescript-eslint/ban-ts-ignore': 'off',
+      },
+    },
+  ],
 };
