@@ -10,7 +10,7 @@
 
 \+ **new DeviceController**(`__namedParameters`: object): *[DeviceController](devicecontroller.md)*
 
-*Defined in [homie/application/DeviceController.ts:13](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/application/DeviceController.ts#L13)*
+*Defined in [homie/application/DeviceController.ts:13](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/application/DeviceController.ts#L13)*
 
 **Parameters:**
 
@@ -29,7 +29,7 @@ Name | Type |
 
 • **device**: *[Device](device.md)*
 
-*Defined in [homie/application/DeviceController.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/application/DeviceController.ts#L11)*
+*Defined in [homie/application/DeviceController.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/application/DeviceController.ts#L11)*
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 • **homiePublisher**: *[HomiePublisher](homiepublisher.md)*
 
-*Defined in [homie/application/DeviceController.ts:13](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/application/DeviceController.ts#L13)*
+*Defined in [homie/application/DeviceController.ts:13](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/application/DeviceController.ts#L13)*
 
 ## Methods
 
@@ -45,7 +45,7 @@ ___
 
 ▸ **addNode**(`nodeProps`: [NodePropsDTO](../interfaces/nodepropsdto.md)): *Promise‹this›*
 
-*Defined in [homie/application/DeviceController.ts:30](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/application/DeviceController.ts#L30)*
+*Defined in [homie/application/DeviceController.ts:30](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/application/DeviceController.ts#L30)*
 
 **Parameters:**
 
@@ -61,7 +61,7 @@ ___
 
 ▸ **disconnect**(): *Promise‹this›*
 
-*Defined in [homie/application/DeviceController.ts:40](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/application/DeviceController.ts#L40)*
+*Defined in [homie/application/DeviceController.ts:40](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/application/DeviceController.ts#L40)*
 
 **Returns:** *Promise‹this›*
 
@@ -71,7 +71,7 @@ ___
 
 ▸ **updateState**(`state`: "init" | "ready" | "disconnected" | "sleeping" | "lost" | "alert"): *Promise‹this›*
 
-*Defined in [homie/application/DeviceController.ts:20](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/application/DeviceController.ts#L20)*
+*Defined in [homie/application/DeviceController.ts:20](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/application/DeviceController.ts#L20)*
 
 **Parameters:**
 
@@ -87,7 +87,7 @@ ___
 
 ▸ **create**(`__namedParameters`: object): *[DeviceController](devicecontroller.md)*
 
-*Defined in [homie/application/DeviceController.ts:50](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/application/DeviceController.ts#L50)*
+*Defined in [homie/application/DeviceController.ts:50](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/application/DeviceController.ts#L50)*
 
 **Parameters:**
 

@@ -14,7 +14,7 @@
 
 *Inherited from [ValueObject](valueobject.md).[constructor](valueobject.md#constructor)*
 
-*Defined in [core/domain/ValueObject.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/core/domain/ValueObject.ts#L7)*
+*Defined in [core/domain/ValueObject.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/domain/ValueObject.ts#L7)*
 
 **Parameters:**
 
@@ -32,7 +32,7 @@ Name | Type |
 
 *Inherited from [ValueObject](valueobject.md).[props](valueobject.md#props)*
 
-*Defined in [core/domain/ValueObject.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/core/domain/ValueObject.ts#L7)*
+*Defined in [core/domain/ValueObject.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/domain/ValueObject.ts#L7)*
 
 ## Accessors
 
@@ -40,7 +40,7 @@ Name | Type |
 
 • **get datatype**(): *"string" | "boolean" | "integer" | "float" | "color" | "enum"*
 
-*Defined in [homie/domain/Datatype.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Datatype.ts#L11)*
+*Defined in [homie/domain/Datatype.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Datatype.ts#L11)*
 
 **Returns:** *"string" | "boolean" | "integer" | "float" | "color" | "enum"*
 
@@ -50,7 +50,7 @@ ___
 
 • **get format**(): *undefined | string | string[] | number[]*
 
-*Defined in [homie/domain/Datatype.ts:15](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Datatype.ts#L15)*
+*Defined in [homie/domain/Datatype.ts:15](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Datatype.ts#L15)*
 
 **Returns:** *undefined | string | string[] | number[]*
 
@@ -60,7 +60,7 @@ ___
 
 ▸ **create**(`props`: [DatatypeProps](../interfaces/datatypeprops.md)): *[Result](result.md)‹[Datatype](datatype.md)›*
 
-*Defined in [homie/domain/Datatype.ts:19](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Datatype.ts#L19)*
+*Defined in [homie/domain/Datatype.ts:19](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Datatype.ts#L19)*
 
 **Parameters:**
 

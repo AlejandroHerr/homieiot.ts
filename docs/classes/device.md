@@ -14,7 +14,7 @@
 
 *Inherited from [Entity](entity.md).[constructor](entity.md#constructor)*
 
-*Defined in [core/domain/Entity.ts:4](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/core/domain/Entity.ts#L4)*
+*Defined in [core/domain/Entity.ts:4](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/domain/Entity.ts#L4)*
 
 **Parameters:**
 
@@ -33,7 +33,7 @@ Name | Type |
 
 *Inherited from [Entity](entity.md).[id](entity.md#id)*
 
-*Defined in [core/domain/Entity.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/core/domain/Entity.ts#L2)*
+*Defined in [core/domain/Entity.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/domain/Entity.ts#L2)*
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 *Inherited from [Entity](entity.md).[props](entity.md#props)*
 
-*Defined in [core/domain/Entity.ts:4](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/core/domain/Entity.ts#L4)*
+*Defined in [core/domain/Entity.ts:4](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/domain/Entity.ts#L4)*
 
 ## Accessors
 
@@ -51,7 +51,7 @@ ___
 
 • **get deviceId**(): *string*
 
-*Defined in [homie/domain/Device.ts:33](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Device.ts#L33)*
+*Defined in [homie/domain/Device.ts:33](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L33)*
 
 **Returns:** *string*
 
@@ -61,7 +61,7 @@ ___
 
 • **get extensions**(): *string*
 
-*Defined in [homie/domain/Device.ts:53](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Device.ts#L53)*
+*Defined in [homie/domain/Device.ts:53](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L53)*
 
 **Returns:** *string*
 
@@ -71,7 +71,7 @@ ___
 
 • **get homie**(): *string*
 
-*Defined in [homie/domain/Device.ts:37](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Device.ts#L37)*
+*Defined in [homie/domain/Device.ts:37](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L37)*
 
 **Returns:** *string*
 
@@ -81,7 +81,7 @@ ___
 
 • **get name**(): *string*
 
-*Defined in [homie/domain/Device.ts:41](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Device.ts#L41)*
+*Defined in [homie/domain/Device.ts:41](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L41)*
 
 **Returns:** *string*
 
@@ -91,7 +91,7 @@ ___
 
 • **get nodes**(): *[Node](node.md)[]*
 
-*Defined in [homie/domain/Device.ts:49](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Device.ts#L49)*
+*Defined in [homie/domain/Device.ts:49](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L49)*
 
 **Returns:** *[Node](node.md)[]*
 
@@ -101,7 +101,7 @@ ___
 
 • **get state**(): *"init" | "ready" | "disconnected" | "sleeping" | "lost" | "alert"*
 
-*Defined in [homie/domain/Device.ts:45](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Device.ts#L45)*
+*Defined in [homie/domain/Device.ts:45](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L45)*
 
 **Returns:** *"init" | "ready" | "disconnected" | "sleeping" | "lost" | "alert"*
 
@@ -111,7 +111,7 @@ ___
 
 ▸ **addNode**(`node`: [Node](node.md)): *[Result](result.md)‹void›*
 
-*Defined in [homie/domain/Device.ts:57](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Device.ts#L57)*
+*Defined in [homie/domain/Device.ts:57](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L57)*
 
 **Parameters:**
 
@@ -127,7 +127,7 @@ ___
 
 ▸ **setState**(`state`: "init" | "ready" | "disconnected" | "sleeping" | "lost" | "alert"): *[Result](result.md)‹void›*
 
-*Defined in [homie/domain/Device.ts:73](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Device.ts#L73)*
+*Defined in [homie/domain/Device.ts:73](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L73)*
 
 **Parameters:**
 
@@ -143,7 +143,7 @@ ___
 
 ▸ **create**(`deviceProps`: [RequiredDeviceProps](../interfaces/requireddeviceprops.md) & Partial‹[OptionalDeviceProps](../interfaces/optionaldeviceprops.md)›): *[Result](result.md)‹[Device](device.md)›*
 
-*Defined in [homie/domain/Device.ts:85](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Device.ts#L85)*
+*Defined in [homie/domain/Device.ts:85](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L85)*
 
 **Parameters:**
 

@@ -14,4 +14,4 @@
 
 • **deviceId**: *string*
 
-*Defined in [homie/domain/Device.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/a180e8f/src/homie/domain/Device.ts#L11)*
+*Defined in [homie/domain/Device.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L11)*
