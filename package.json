@@ -40,6 +40,8 @@
     "semantic-release": "15.13.24",
     "ts-jest": "24.1.0",
     "ts-node": "8.4.1",
+    "typedoc": "^0.15.0",
+    "typedoc-plugin-markdown": "^2.2.10",
     "wait-for-expect": "^3.0.0"
   },
   "scripts": {
@@ -48,6 +50,10 @@
     "build:module": "tsc -p tsconfig.module.json",
     "clean": "rm -rf dist",
     "commit": "git-cz",
+    "docs": "run-s docs:clean docs:generate docs:config",
+    "docs:clean": "rm -rf ./docs/.vuepress",
+    "docs:config": "sh ./scripts/configureVuepress.sh",
+    "docs:generate": "typedoc ./src/index.ts",
     "dev": "sh ./scripts/dev.sh",
     "lint": "eslint ./src --ext ts",
     "test": "sh ./scripts/test.sh",
