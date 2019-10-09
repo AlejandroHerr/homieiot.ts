@@ -32,6 +32,7 @@ export default class HomieController {
   static create({ mqttOptions }: { mqttOptions: Partial<MqttClientOptions> }): HomieController {
     const mqttConnectionManager = MqttConnectionManager.create({ options: mqttOptions });
     const homiePublisher = HomiePublisher.create({ mqttConnectionManager });
+
     return new HomieController({ homiePublisher });
   }
 }
