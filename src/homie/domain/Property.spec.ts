@@ -18,18 +18,58 @@ const createProperty = (props: { datatype: Datatype } & Partial<PropertyProps>):
 
 describe('homie/domain/Property', () => {
   describe('create', () => {
+    it('should create a Property', () => {
+      const datatype = new Datatype({ datatype: 'integer', format: [0, 10] });
+      const propertyOrError = Property.create({
+        deviceId: 'device0',
+        nodeId: 'node0',
+        propertyId: 'property0',
+        datatype,
+        name: 'Test Property',
+        settable: true,
+        retained: false,
+        unit: 'dB',
+        value: 7,
+      });
+
+      expect(propertyOrError.succeded()).toBeTruthy();
+      expect(propertyOrError).toHaveProperty('value', expect.any(Property));
+      expect(propertyOrError).toHaveProperty(['value', 'id'], 'device0/node0/property0');
+      expect(propertyOrError).toHaveProperty(['value', 'deviceId'], 'device0');
+      expect(propertyOrError).toHaveProperty(['value', 'nodeId'], 'node0');
+      expect(propertyOrError).toHaveProperty(['value', 'propertyId'], 'property0');
+      expect(propertyOrError).toHaveProperty(['value', 'datatype'], datatype);
+      expect(propertyOrError).toHaveProperty(['value', 'name'], 'Test Property');
+      expect(propertyOrError).toHaveProperty(['value', 'settable'], true);
+      expect(propertyOrError).toHaveProperty(['value', 'retained'], false);
+      expect(propertyOrError).toHaveProperty(['value', 'unit'], 'dB');
+      expect(propertyOrError).toHaveProperty(['value', 'value'], 7);
+    });
+
+    it('should create a Property with default values', () => {
+      const datatype = new Datatype({ datatype: 'boolean' });
+      const propertyOrError = Property.create({
+        deviceId: 'device0',
+        nodeId: 'node0',
+        propertyId: 'property0',
+        datatype,
+      });
+
+      expect(propertyOrError.succeded()).toBeTruthy();
+      expect(propertyOrError).toHaveProperty('value', expect.any(Property));
+      expect(propertyOrError).toHaveProperty(['value', 'id'], 'device0/node0/property0');
+      expect(propertyOrError).toHaveProperty(['value', 'deviceId'], 'device0');
+      expect(propertyOrError).toHaveProperty(['value', 'nodeId'], 'node0');
+      expect(propertyOrError).toHaveProperty(['value', 'propertyId'], 'property0');
+      expect(propertyOrError).toHaveProperty(['value', 'datatype'], datatype);
+      expect(propertyOrError).toHaveProperty(['value', 'name'], '');
+      expect(propertyOrError).toHaveProperty(['value', 'settable'], false);
+      expect(propertyOrError).toHaveProperty(['value', 'retained'], true);
+      expect(propertyOrError).toHaveProperty(['value', 'unit'], undefined);
+      expect(propertyOrError).toHaveProperty(['value', 'value'], '');
+    });
+
     it('should validate the props', () => {
-      expect(
-        Property.create({
-          deviceId: 'deviceid',
-          nodeId: 'nodeid',
-          propertyId: 'propertyid',
-          datatype: new Datatype({ datatype: 'string' }),
-          name: 'My Type',
-          settable: false,
-          retained: true,
-        }),
-      ).toHaveProperty('value', expect.any(Property));
       expect(
         Property.create({
           deviceId: 'deviceID',
@@ -39,47 +79,21 @@ describe('homie/domain/Property', () => {
           name: 'My Type',
           settable: false,
           retained: true,
-        }),
-      ).toHaveProperty('error', expect.any(Error));
-    });
-    it('should validate the props and the value if it is provided', () => {
-      expect(
-        Property.create({
-          deviceId: 'deviceid',
-          nodeId: 'nodeid',
-          propertyId: 'propertyid',
-          datatype: new Datatype({ datatype: 'float', format: [1, 2] }),
-          name: 'My Type',
-          settable: false,
-          retained: true,
-          value: 1.5,
-        }),
-      ).toHaveProperty('value', expect.any(Property));
-      expect(
-        Property.create({
-          deviceId: 'deviceid',
-          nodeId: 'nodeid',
-          propertyId: 'propertyid',
-          datatype: new Datatype({ datatype: 'float', format: [1, 2] }),
-          name: 'My Type',
-          settable: false,
-          retained: true,
-          value: 5,
-        }),
-      ).toHaveProperty('error', expect.any(Error));
-    });
-    it('should create the Property with default props', () => {
-      const property = Property.create({
-        deviceId: 'deviceid',
-        nodeId: 'nodeid',
-        propertyId: 'propertyid',
-        datatype: new Datatype({ datatype: 'string' }),
-      });
+        }).failed(),
+      ).toBeTruthy();
 
-      expect(property.value as Property).toHaveProperty('name', '');
-      expect(property.value as Property).toHaveProperty('settable', false);
-      expect(property.value as Property).toHaveProperty('retained', true);
-      expect(property.value as Property).toHaveProperty('value', '');
+      expect(
+        Property.create({
+          deviceId: 'deviceid',
+          nodeId: 'nodeid',
+          propertyId: 'propertyid',
+          datatype: new Datatype({ datatype: 'string' }),
+          name: 'My Type',
+          settable: false,
+          retained: true,
+          value: 7,
+        }).failed(),
+      ).toBeTruthy();
     });
   });
   describe('setValue', () => {

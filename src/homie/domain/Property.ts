@@ -40,7 +40,7 @@ export default class Property extends Entity<PropertyProps> {
   }
 
   get propertyId(): PropertyProps['propertyId'] {
-    return this.props.nodeId;
+    return this.props.propertyId;
   }
 
   get name(): PropertyProps['name'] {
@@ -80,25 +80,27 @@ export default class Property extends Entity<PropertyProps> {
   }
 
   static create(propertyProps: RequiredPropertyProps & Partial<OptionalNodeProps>): Result<Property> {
-    const props = { ...defaultProps, ...propertyProps };
-    const propsValidationResult = propertySchema.validate(props, { convert: false });
+    const propsOrValue = propertySchema.validate({ ...defaultProps, ...propertyProps }, { convert: false });
 
-    if (propsValidationResult.error) {
-      return Result.fail(propsValidationResult.error);
+    if (propsOrValue.error) {
+      return Result.fail(propsOrValue.error);
     }
 
     if (propertyProps.value !== undefined) {
-      const valueValidationResult = propertyValueSchema(props.datatype).validate(propertyProps.value, {
-        convert: false,
-      });
+      const valueValidationResult = propertyValueSchema(propsOrValue.value.datatype).validate(
+        propsOrValue.value.value,
+        {
+          convert: false,
+        },
+      );
 
       if (valueValidationResult.error) {
         return Result.fail(valueValidationResult.error);
       }
     }
 
-    const id = generateUUID(propertyProps);
+    const id = generateUUID(propsOrValue.value);
 
-    return Result.ok<Property>(new Property({ ...defaultProps, ...propertyProps }, id));
+    return Result.ok<Property>(new Property(propsOrValue.value, id));
   }
 }

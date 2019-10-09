@@ -8,19 +8,23 @@ describe('homie/domain/Device', () => {
 
       expect(deviceOrError.succeded()).toBeTruthy();
       expect(deviceOrError).toHaveProperty('value', expect.any(Device));
-      expect((deviceOrError.value as Device).id).toBe('device0');
+      expect(deviceOrError).toHaveProperty(['value', 'id'], 'device0');
+      expect(deviceOrError).toHaveProperty(['value', 'deviceId'], 'device0');
+      expect(deviceOrError).toHaveProperty(['value', 'homie'], '4.0.1');
+      expect(deviceOrError).toHaveProperty(['value', 'name'], 'my test device');
     });
     it('should create a Device with default values', () => {
       const deviceOrError = Device.create({ deviceId: 'device0' });
 
       expect(deviceOrError.succeded()).toBeTruthy();
       expect(deviceOrError).toHaveProperty('value', expect.any(Device));
-      expect((deviceOrError.value as Device).id).toBe('device0');
-      expect((deviceOrError.value as Device).homie).toBe('4.0.0');
-      expect((deviceOrError.value as Device).name).toBe('');
-      expect((deviceOrError.value as Device).state).toBe('ready');
-      expect((deviceOrError.value as Device).nodes).toEqual([]);
-      expect((deviceOrError.value as Device).extensions).toBe('');
+      expect(deviceOrError).toHaveProperty(['value', 'id'], 'device0');
+      expect(deviceOrError).toHaveProperty(['value', 'deviceId'], 'device0');
+      expect(deviceOrError).toHaveProperty(['value', 'homie'], '4.0.0');
+      expect(deviceOrError).toHaveProperty(['value', 'name'], '');
+      expect(deviceOrError).toHaveProperty(['value', 'state'], 'ready');
+      expect(deviceOrError).toHaveProperty(['value', 'nodes'], []);
+      expect(deviceOrError).toHaveProperty(['value', 'extensions'], '');
     });
     it('should validate the props', () => {
       const deviceOrError = Device.create({ deviceId: 'device0', homie: '4' });

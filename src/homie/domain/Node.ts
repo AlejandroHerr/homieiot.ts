@@ -46,15 +46,14 @@ export default class Node extends Entity<NodeProps> {
   }
 
   static create(nodeProps: RequiredNodeProps & Partial<OptionalNodeProps>): Result<Node> {
-    const props = { ...defaultProps, ...nodeProps };
-    const propsValidationResult = nodeSchema.validate(props, { convert: false });
+    const propsOrError = nodeSchema.validate({ ...defaultProps, ...nodeProps }, { convert: false });
 
-    if (propsValidationResult.error) {
-      return Result.fail(propsValidationResult.error);
+    if (propsOrError.error) {
+      return Result.fail(propsOrError.error);
     }
 
-    const id = generateUUID(nodeProps);
+    const id = generateUUID(propsOrError.value);
 
-    return Result.ok(new Node({ ...defaultProps, ...nodeProps }, id));
+    return Result.ok(new Node(propsOrError.value, id));
   }
 }
