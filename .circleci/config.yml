@@ -80,7 +80,7 @@ jobs:
           command: yarn docs
       - run:
           name: Commit
-          command: 'git add ./docs && git commit -m "docs: update docs [skip ci]" && git push'
+          command: 'git add ./docs && git commit -m "docs: update docs [skip ci]" && git push --set-upstream origin $(git branch | grep \* | cut -d " " -f2)'
       - persist_to_workspace:
           root: .
           paths: .
@@ -99,12 +99,12 @@ workflows:
       - lint:
           requires:
             - checkout
-      - docs:
-          requires:
-            - checkout
+      # - docs:
+      #     requires:
+      #       - checkout
       - release:
           requires:
             - build
             - test
             - lint
-            - docs
+            # - docs
