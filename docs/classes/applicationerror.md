@@ -12,7 +12,7 @@
 
 \+ **new ApplicationError**(`message`: string, `cause?`: [Error](applicationerror.md#static-error)): *[ApplicationError](applicationerror.md)*
 
-*Defined in [core/application/ApplicationError.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/core/application/ApplicationError.ts#L2)*
+*Defined in [core/application/ApplicationError.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/application/ApplicationError.ts#L2)*
 
 **Parameters:**
 
@@ -29,7 +29,7 @@ Name | Type |
 
 • **cause**? : *[Error](applicationerror.md#static-error)*
 
-*Defined in [core/application/ApplicationError.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/core/application/ApplicationError.ts#L2)*
+*Defined in [core/application/ApplicationError.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/application/ApplicationError.ts#L2)*
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:974
+Defined in /home/circleci/homieiot.ts/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:974
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:973
+Defined in /home/circleci/homieiot.ts/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:973
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 *Overrides void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:975
+Defined in /home/circleci/homieiot.ts/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:975
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 ▪ **Error**: *ErrorConstructor*
 
-Defined in /Users/alejandro/projects/homie/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:984
+Defined in /home/circleci/homieiot.ts/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:984
 
 ## Methods
 
@@ -77,7 +77,7 @@ Defined in /Users/alejandro/projects/homie/node_modules/typedoc/node_modules/typ
 
 ▸ **create**(`error`: string | Error): *[ApplicationError](applicationerror.md)*
 
-*Defined in [core/application/ApplicationError.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/core/application/ApplicationError.ts#L10)*
+*Defined in [core/application/ApplicationError.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/application/ApplicationError.ts#L10)*
 
 **Parameters:**
 
