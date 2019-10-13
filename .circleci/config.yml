@@ -99,12 +99,12 @@ workflows:
       - lint:
           requires:
             - checkout
-      - docs:
-          requires:
-            - checkout
+      # - docs:
+      #     requires:
+      #       - checkout
       - release:
           requires:
             - build
             - test
             - lint
-            - docs
+            # - docs
