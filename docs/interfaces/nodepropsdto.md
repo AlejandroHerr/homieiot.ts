@@ -10,7 +10,7 @@
 
 • **name**? : *undefined | string*
 
-*Defined in [homie/dto/NodePropsDTO.ts:5](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/dto/NodePropsDTO.ts#L5)*
+*Defined in [homie/dto/NodePropsDTO.ts:5](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/dto/NodePropsDTO.ts#L5)*
 
 ___
 
@@ -18,7 +18,7 @@ ___
 
 • **nodeId**: *string*
 
-*Defined in [homie/dto/NodePropsDTO.ts:4](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/dto/NodePropsDTO.ts#L4)*
+*Defined in [homie/dto/NodePropsDTO.ts:4](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/dto/NodePropsDTO.ts#L4)*
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 • **properties**? : *[Property](../classes/property.md)[]*
 
-*Defined in [homie/dto/NodePropsDTO.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/dto/NodePropsDTO.ts#L7)*
+*Defined in [homie/dto/NodePropsDTO.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/dto/NodePropsDTO.ts#L7)*
 
 ___
 
@@ -34,4 +34,4 @@ ___
 
 • **type**? : *undefined | string*
 
-*Defined in [homie/dto/NodePropsDTO.ts:6](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/dto/NodePropsDTO.ts#L6)*
+*Defined in [homie/dto/NodePropsDTO.ts:6](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/dto/NodePropsDTO.ts#L6)*

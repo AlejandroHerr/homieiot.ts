@@ -10,7 +10,7 @@
 
 • **datatype**: *"integer" | "float" | "boolean" | "string" | "enum" | "color"*
 
-*Defined in [homie/domain/Datatype.ts:6](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/domain/Datatype.ts#L6)*
+*Defined in [homie/domain/Datatype.ts:6](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/domain/Datatype.ts#L6)*
 
 ___
 
@@ -18,4 +18,4 @@ ___
 
 • **format**? : *string | string[] | number[]*
 
-*Defined in [homie/domain/Datatype.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/domain/Datatype.ts#L7)*
+*Defined in [homie/domain/Datatype.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/domain/Datatype.ts#L7)*

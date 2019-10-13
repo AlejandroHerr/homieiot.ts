@@ -14,4 +14,4 @@
 
 • **value**: *T*
 
-*Defined in [core/logic/Result.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/core/logic/Result.ts#L2)*
+*Defined in [core/logic/Result.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/core/logic/Result.ts#L2)*

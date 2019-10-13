@@ -14,7 +14,7 @@
 
 *Inherited from [Entity](entity.md).[constructor](entity.md#constructor)*
 
-*Defined in [core/domain/Entity.ts:4](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/core/domain/Entity.ts#L4)*
+*Defined in [core/domain/Entity.ts:4](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/core/domain/Entity.ts#L4)*
 
 **Parameters:**
 
@@ -33,7 +33,7 @@ Name | Type |
 
 *Inherited from [Entity](entity.md).[id](entity.md#id)*
 
-*Defined in [core/domain/Entity.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/core/domain/Entity.ts#L2)*
+*Defined in [core/domain/Entity.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/core/domain/Entity.ts#L2)*
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 *Inherited from [Entity](entity.md).[props](entity.md#props)*
 
-*Defined in [core/domain/Entity.ts:4](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/core/domain/Entity.ts#L4)*
+*Defined in [core/domain/Entity.ts:4](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/core/domain/Entity.ts#L4)*
 
 ## Accessors
 
@@ -51,7 +51,7 @@ ___
 
 • **get deviceId**(): *string*
 
-*Defined in [homie/domain/Node.ts:28](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/domain/Node.ts#L28)*
+*Defined in [homie/domain/Node.ts:28](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/domain/Node.ts#L28)*
 
 **Returns:** *string*
 
@@ -61,7 +61,7 @@ ___
 
 • **get name**(): *string*
 
-*Defined in [homie/domain/Node.ts:36](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/domain/Node.ts#L36)*
+*Defined in [homie/domain/Node.ts:36](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/domain/Node.ts#L36)*
 
 **Returns:** *string*
 
@@ -71,7 +71,7 @@ ___
 
 • **get nodeId**(): *string*
 
-*Defined in [homie/domain/Node.ts:32](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/domain/Node.ts#L32)*
+*Defined in [homie/domain/Node.ts:32](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/domain/Node.ts#L32)*
 
 **Returns:** *string*
 
@@ -81,7 +81,7 @@ ___
 
 • **get properties**(): *[Property](property.md)[]*
 
-*Defined in [homie/domain/Node.ts:44](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/domain/Node.ts#L44)*
+*Defined in [homie/domain/Node.ts:44](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/domain/Node.ts#L44)*
 
 **Returns:** *[Property](property.md)[]*
 
@@ -91,7 +91,7 @@ ___
 
 • **get type**(): *string*
 
-*Defined in [homie/domain/Node.ts:40](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/domain/Node.ts#L40)*
+*Defined in [homie/domain/Node.ts:40](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/domain/Node.ts#L40)*
 
 **Returns:** *string*
 
@@ -101,7 +101,7 @@ ___
 
 ▸ **create**(`nodeProps`: [RequiredNodeProps](../interfaces/requirednodeprops.md) & Partial‹OptionalNodeProps›): *[Result](result.md)‹[Node](node.md)›*
 
-*Defined in [homie/domain/Node.ts:48](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/domain/Node.ts#L48)*
+*Defined in [homie/domain/Node.ts:48](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/homie/domain/Node.ts#L48)*
 
 **Parameters:**
 

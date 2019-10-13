@@ -16,7 +16,7 @@
 
 \+ **new ValueObject**(`props`: T): *[ValueObject](valueobject.md)*
 
-*Defined in [core/domain/ValueObject.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/core/domain/ValueObject.ts#L7)*
+*Defined in [core/domain/ValueObject.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/core/domain/ValueObject.ts#L7)*
 
 **Parameters:**
 
@@ -32,4 +32,4 @@ Name | Type |
 
 • **props**: *T*
 
-*Defined in [core/domain/ValueObject.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/core/domain/ValueObject.ts#L7)*
+*Defined in [core/domain/ValueObject.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/e44ddfb/src/core/domain/ValueObject.ts#L7)*
