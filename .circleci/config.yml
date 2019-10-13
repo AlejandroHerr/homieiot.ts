@@ -62,6 +62,25 @@ jobs:
       - run:
           name: Lint
           command: 'yarn lint'
+  docs:
+    <<: *defaults
+    setps:
+      - *step_attach_workspace
+      - run:
+          name: Add github ssh keys
+          command: mkdir ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - run:
+          name: Configure git email
+          command: git config --global user.email "hola@alejandroherr.io"
+      - run:
+          name: Configure git name
+          command: git config --global user.name "AlejandroHerr"
+      - run:
+          name: Generate docs
+          command: yarn docs
+      - run:
+          name: Commit
+          command: "git add ./docs && git commit -m 'docs: update docs' && git push"
 
 workflows:
   version: 2
