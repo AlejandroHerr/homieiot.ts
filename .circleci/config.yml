@@ -64,7 +64,7 @@ jobs:
           command: 'yarn lint'
   docs:
     <<: *defaults
-    setps:
+    steps:
       - *step_attach_workspace
       - run:
           name: Add github ssh keys
@@ -80,7 +80,10 @@ jobs:
           command: yarn docs
       - run:
           name: Commit
-          command: "git add ./docs && git commit -m 'docs: update docs' && git push"
+          command: 'git add ./docs && git commit -m "docs: update docs [skip ci]" && git push'
+      - persist_to_workspace:
+          root: .
+          paths: .
 
 workflows:
   version: 2
@@ -95,6 +98,9 @@ workflows:
             - checkout
       - lint:
           requires:
+            - checkout
+      - docs:
+          reuiqred:
             - checkout
       - release:
           requires:
