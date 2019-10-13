@@ -10,7 +10,7 @@
 
 \+ **new HomiePublisher**(`__namedParameters`: object): *[HomiePublisher](homiepublisher.md)*
 
-*Defined in [homie/services/HomiePublisher.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/services/HomiePublisher.ts#L11)*
+*Defined in [homie/services/HomiePublisher.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/services/HomiePublisher.ts#L11)*
 
 **Parameters:**
 
@@ -28,7 +28,7 @@ Name | Type |
 
 • **mqttConnectionManager**: *[MqttConnectionManager](mqttconnectionmanager.md)*
 
-*Defined in [homie/services/HomiePublisher.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/services/HomiePublisher.ts#L11)*
+*Defined in [homie/services/HomiePublisher.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/services/HomiePublisher.ts#L11)*
 
 ## Methods
 
@@ -36,7 +36,7 @@ Name | Type |
 
 ▸ **createConnection**(`device`: [Device](device.md)): *Promise‹[Result](result.md)‹[MqttClient](../interfaces/mqttclient.md)››*
 
-*Defined in [homie/services/HomiePublisher.ts:17](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/services/HomiePublisher.ts#L17)*
+*Defined in [homie/services/HomiePublisher.ts:17](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/services/HomiePublisher.ts#L17)*
 
 **Parameters:**
 
@@ -52,7 +52,7 @@ ___
 
 ▸ **disconnect**(`device`: [Device](device.md)): *Promise‹[Result](result.md)‹void››*
 
-*Defined in [homie/services/HomiePublisher.ts:106](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/services/HomiePublisher.ts#L106)*
+*Defined in [homie/services/HomiePublisher.ts:106](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/services/HomiePublisher.ts#L106)*
 
 **Parameters:**
 
@@ -68,7 +68,7 @@ ___
 
 ▸ **publishDevice**(`device`: [Device](device.md)): *Promise‹[Result](result.md)‹void››*
 
-*Defined in [homie/services/HomiePublisher.ts:36](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/services/HomiePublisher.ts#L36)*
+*Defined in [homie/services/HomiePublisher.ts:36](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/services/HomiePublisher.ts#L36)*
 
 **Parameters:**
 
@@ -84,7 +84,7 @@ ___
 
 ▸ **publishNode**(`device`: [Device](device.md), `node`: [Node](node.md)): *Promise‹[Result](result.md)‹void››*
 
-*Defined in [homie/services/HomiePublisher.ts:78](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/services/HomiePublisher.ts#L78)*
+*Defined in [homie/services/HomiePublisher.ts:78](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/services/HomiePublisher.ts#L78)*
 
 **Parameters:**
 
@@ -101,7 +101,7 @@ ___
 
 ▸ **publishStateUpdate**(`device`: [Device](device.md)): *Promise‹[Result](result.md)‹void››*
 
-*Defined in [homie/services/HomiePublisher.ts:63](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/services/HomiePublisher.ts#L63)*
+*Defined in [homie/services/HomiePublisher.ts:63](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/services/HomiePublisher.ts#L63)*
 
 **Parameters:**
 
@@ -117,7 +117,7 @@ ___
 
 ▸ **create**(`__namedParameters`: object): *[HomiePublisher](homiepublisher.md)*
 
-*Defined in [homie/services/HomiePublisher.ts:119](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/services/HomiePublisher.ts#L119)*
+*Defined in [homie/services/HomiePublisher.ts:119](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/services/HomiePublisher.ts#L119)*
 
 **Parameters:**
 

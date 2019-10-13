@@ -51,7 +51,10 @@ jobs:
       - *step_attach_workspace
       - run:
           name: Test
-          command: 'yarn jest --ci --passWithNoTests'
+          command: 'yarn jest --ci --passWithNoTests --coverage'
+      - run:
+          name: Codecov
+          comman: 'yarn codecov'
   lint:
     <<: *defaults
     steps:
