@@ -14,7 +14,7 @@
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:130
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:130
 
 Optionally override the trusted CA certificates in PEM format
 
@@ -26,7 +26,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:126
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:126
 
 optional cert chains in PEM format
 
@@ -38,7 +38,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:36
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:36
 
 true, set to false to receive QoS 1 and 2 messages while offline
 
@@ -50,7 +50,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:24
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:24
 
 'mqttjs_' + Math.random().toString(16).substr(2, 8)
 
@@ -62,7 +62,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:44
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:44
 
 30 * 1000 milliseconds, time to wait before a CONNACK is received
 
@@ -74,7 +74,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:9
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:9
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:10
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:10
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:56
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:56
 
 a Store for the incoming packets
 
@@ -106,7 +106,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:20
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:20
 
  10 seconds, set to 0 to disable
 
@@ -118,7 +118,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:122
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:122
 
 optional private keys in PEM format
 
@@ -130,7 +130,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:60
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:60
 
 a Store for the outgoing packets
 
@@ -142,7 +142,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:52
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:52
 
 the password required by your broker, if any
 
@@ -154,7 +154,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:11
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:11
 
 ___
 
@@ -164,7 +164,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:8
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:8
 
 ___
 
@@ -174,7 +174,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:106
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:106
 
 ___
 
@@ -184,7 +184,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:12
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:12
 
 ___
 
@@ -194,7 +194,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:28
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:28
 
 'MQTT'
 
@@ -206,7 +206,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:32
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:32
 
 4
 
@@ -218,7 +218,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:61
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:61
 
 ___
 
@@ -228,7 +228,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:40
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:40
 
 1000 milliseconds, interval between two reconnections
 
@@ -240,7 +240,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:131
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:131
 
 ___
 
@@ -250,7 +250,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:62
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:62
 
 ___
 
@@ -260,7 +260,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:71
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:71
 
 true, set to false to disable re-subscribe functionality
 
@@ -272,7 +272,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:63
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:63
 
 ___
 
@@ -282,7 +282,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:105
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:105
 
 ___
 
@@ -292,7 +292,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:48
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:48
 
 the username required by your broker, if any
 
@@ -304,7 +304,7 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:75
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:75
 
 a message that will sent by the broker automatically when the client disconnect badly.
 
@@ -316,4 +316,4 @@ ___
 
 *Inherited from void*
 
-Defined in /Users/alejandro/projects/homie/node_modules/mqtt/types/lib/client-options.d.ts:14
+Defined in /home/circleci/homieiot.ts/node_modules/mqtt/types/lib/client-options.d.ts:14

@@ -16,7 +16,7 @@
 
 *Inherited from [RequiredDeviceProps](requireddeviceprops.md).[deviceId](requireddeviceprops.md#deviceid)*
 
-*Defined in [homie/domain/Device.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Device.ts#L11)*
+*Defined in [homie/domain/Device.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/domain/Device.ts#L11)*
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 *Inherited from [OptionalDeviceProps](optionaldeviceprops.md).[extensions](optionaldeviceprops.md#extensions)*
 
-*Defined in [homie/domain/Device.ts:19](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Device.ts#L19)*
+*Defined in [homie/domain/Device.ts:19](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/domain/Device.ts#L19)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 *Inherited from [OptionalDeviceProps](optionaldeviceprops.md).[homie](optionaldeviceprops.md#homie)*
 
-*Defined in [homie/domain/Device.ts:15](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Device.ts#L15)*
+*Defined in [homie/domain/Device.ts:15](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/domain/Device.ts#L15)*
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 *Inherited from [OptionalDeviceProps](optionaldeviceprops.md).[name](optionaldeviceprops.md#name)*
 
-*Defined in [homie/domain/Device.ts:16](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Device.ts#L16)*
+*Defined in [homie/domain/Device.ts:16](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/domain/Device.ts#L16)*
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 *Inherited from [OptionalDeviceProps](optionaldeviceprops.md).[nodes](optionaldeviceprops.md#nodes)*
 
-*Defined in [homie/domain/Device.ts:18](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Device.ts#L18)*
+*Defined in [homie/domain/Device.ts:18](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/domain/Device.ts#L18)*
 
 ___
 
@@ -66,4 +66,4 @@ ___
 
 *Inherited from [OptionalDeviceProps](optionaldeviceprops.md).[state](optionaldeviceprops.md#state)*
 
-*Defined in [homie/domain/Device.ts:17](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Device.ts#L17)*
+*Defined in [homie/domain/Device.ts:17](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/domain/Device.ts#L17)*
