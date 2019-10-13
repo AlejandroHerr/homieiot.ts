@@ -54,7 +54,7 @@ jobs:
           command: 'yarn jest --ci --passWithNoTests --coverage'
       - run:
           name: Codecov
-          comman: 'yarn codecov'
+          command: 'yarn codecov'
   lint:
     <<: *defaults
     steps:

@@ -12,7 +12,7 @@
 
 • **datatype**: *[Datatype](../classes/datatype.md)*
 
-*Defined in [homie/domain/Property.ts:13](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L13)*
+*Defined in [homie/domain/Property.ts:13](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L13)*
 
 ___
 
@@ -20,7 +20,7 @@ ___
 
 • **deviceId**: *string*
 
-*Defined in [homie/domain/Property.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L10)*
+*Defined in [homie/domain/Property.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L10)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **nodeId**: *string*
 
-*Defined in [homie/domain/Property.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L11)*
+*Defined in [homie/domain/Property.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L11)*
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 • **propertyId**: *string*
 
-*Defined in [homie/domain/Property.ts:12](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L12)*
+*Defined in [homie/domain/Property.ts:12](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L12)*

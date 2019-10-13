@@ -16,7 +16,7 @@
 
 *Inherited from [RequiredPropertyProps](requiredpropertyprops.md).[datatype](requiredpropertyprops.md#datatype)*
 
-*Defined in [homie/domain/Property.ts:13](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L13)*
+*Defined in [homie/domain/Property.ts:13](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L13)*
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 *Inherited from [RequiredPropertyProps](requiredpropertyprops.md).[deviceId](requiredpropertyprops.md#deviceid)*
 
-*Defined in [homie/domain/Property.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L10)*
+*Defined in [homie/domain/Property.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L10)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 *Inherited from [OptionalNodeProps](optionalnodeprops.md).[name](optionalnodeprops.md#name)*
 
-*Defined in [homie/domain/Property.ts:17](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L17)*
+*Defined in [homie/domain/Property.ts:17](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L17)*
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 *Inherited from [RequiredPropertyProps](requiredpropertyprops.md).[nodeId](requiredpropertyprops.md#nodeid)*
 
-*Defined in [homie/domain/Property.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L11)*
+*Defined in [homie/domain/Property.ts:11](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L11)*
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 *Inherited from [RequiredPropertyProps](requiredpropertyprops.md).[propertyId](requiredpropertyprops.md#propertyid)*
 
-*Defined in [homie/domain/Property.ts:12](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L12)*
+*Defined in [homie/domain/Property.ts:12](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L12)*
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 *Inherited from [OptionalNodeProps](optionalnodeprops.md).[retained](optionalnodeprops.md#retained)*
 
-*Defined in [homie/domain/Property.ts:19](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L19)*
+*Defined in [homie/domain/Property.ts:19](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L19)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 *Inherited from [OptionalNodeProps](optionalnodeprops.md).[settable](optionalnodeprops.md#settable)*
 
-*Defined in [homie/domain/Property.ts:18](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L18)*
+*Defined in [homie/domain/Property.ts:18](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L18)*
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 *Inherited from [OptionalNodeProps](optionalnodeprops.md).[unit](optionalnodeprops.md#optional-unit)*
 
-*Defined in [homie/domain/Property.ts:20](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L20)*
+*Defined in [homie/domain/Property.ts:20](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L20)*
 
 ___
 
@@ -96,4 +96,4 @@ ___
 
 *Inherited from [OptionalNodeProps](optionalnodeprops.md).[value](optionalnodeprops.md#value)*
 
-*Defined in [homie/domain/Property.ts:21](https://github.com/AlejandroHerr/homieiot.ts/blob/0651aed/src/homie/domain/Property.ts#L21)*
+*Defined in [homie/domain/Property.ts:21](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/domain/Property.ts#L21)*
