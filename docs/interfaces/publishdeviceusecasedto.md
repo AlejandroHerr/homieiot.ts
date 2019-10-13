@@ -10,7 +10,7 @@
 
 • **deviceProps**: *[DevicePropsDTO](devicepropsdto.md)*
 
-*Defined in [homie/useCases/publishDeviceUseCase.ts:8](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/useCases/publishDeviceUseCase.ts#L8)*
+*Defined in [homie/useCases/publishDeviceUseCase.ts:8](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/homie/useCases/publishDeviceUseCase.ts#L8)*
 
 ___
 
@@ -18,4 +18,4 @@ ___
 
 • **homiePublisher**: *[HomiePublisher](../classes/homiepublisher.md)*
 
-*Defined in [homie/useCases/publishDeviceUseCase.ts:9](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/useCases/publishDeviceUseCase.ts#L9)*
+*Defined in [homie/useCases/publishDeviceUseCase.ts:9](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/homie/useCases/publishDeviceUseCase.ts#L9)*

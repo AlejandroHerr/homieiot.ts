@@ -10,4 +10,4 @@
 
 • **error**: *string | Error*
 
-*Defined in [core/logic/Result.ts:6](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/logic/Result.ts#L6)*
+*Defined in [core/logic/Result.ts:6](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/logic/Result.ts#L6)*

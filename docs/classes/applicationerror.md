@@ -12,7 +12,7 @@
 
 \+ **new ApplicationError**(`message`: string, `cause?`: [Error](applicationerror.md#static-error)): *[ApplicationError](applicationerror.md)*
 
-*Defined in [core/application/ApplicationError.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/application/ApplicationError.ts#L2)*
+*Defined in [core/application/ApplicationError.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/application/ApplicationError.ts#L2)*
 
 **Parameters:**
 
@@ -29,7 +29,7 @@ Name | Type |
 
 • **cause**? : *[Error](applicationerror.md#static-error)*
 
-*Defined in [core/application/ApplicationError.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/application/ApplicationError.ts#L2)*
+*Defined in [core/application/ApplicationError.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/application/ApplicationError.ts#L2)*
 
 ___
 
@@ -77,7 +77,7 @@ Defined in /home/circleci/homieiot.ts/node_modules/typedoc/node_modules/typescri
 
 ▸ **create**(`error`: string | Error): *[ApplicationError](applicationerror.md)*
 
-*Defined in [core/application/ApplicationError.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/application/ApplicationError.ts#L10)*
+*Defined in [core/application/ApplicationError.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/application/ApplicationError.ts#L10)*
 
 **Parameters:**
 
