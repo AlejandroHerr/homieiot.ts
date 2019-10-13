@@ -28,6 +28,14 @@ services:
       - '../tsconfig.json:/homie/tsconfig.json'
       - '../yarn.lock:/homie/yarn.lock'
     entrypoint: ['/bin/sh']
+  coverage_server:
+    image: nginx:stable-alpine
+    depends_on:
+      - node_app
+    ports:
+      - 8080:80
+    volumes:
+      - '../coverage/lcov-report:/usr/share/nginx/html'
 
 volumes:
   node_modules:

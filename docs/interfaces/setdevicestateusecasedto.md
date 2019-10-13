@@ -10,7 +10,7 @@
 
 • **device**: *[Device](../classes/device.md)*
 
-*Defined in [homie/useCases/setDeviceStateUseCase.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/useCases/setDeviceStateUseCase.ts#L7)*
+*Defined in [homie/useCases/setDeviceStateUseCase.ts:7](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/useCases/setDeviceStateUseCase.ts#L7)*
 
 ___
 
@@ -18,7 +18,7 @@ ___
 
 • **homiePublisher**: *[HomiePublisher](../classes/homiepublisher.md)*
 
-*Defined in [homie/useCases/setDeviceStateUseCase.ts:9](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/useCases/setDeviceStateUseCase.ts#L9)*
+*Defined in [homie/useCases/setDeviceStateUseCase.ts:9](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/useCases/setDeviceStateUseCase.ts#L9)*
 
 ___
 
@@ -26,4 +26,4 @@ ___
 
 • **state**: *"init" | "ready" | "disconnected" | "sleeping" | "lost" | "alert"*
 
-*Defined in [homie/useCases/setDeviceStateUseCase.ts:8](https://github.com/AlejandroHerr/homieiot.ts/blob/cd91a62/src/homie/useCases/setDeviceStateUseCase.ts#L8)*
+*Defined in [homie/useCases/setDeviceStateUseCase.ts:8](https://github.com/AlejandroHerr/homieiot.ts/blob/1330521/src/homie/useCases/setDeviceStateUseCase.ts#L8)*

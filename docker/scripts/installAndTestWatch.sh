@@ -1,2 +1,2 @@
 yarn install
-yarn jest --watch
+yarn jest --watch --coverage
