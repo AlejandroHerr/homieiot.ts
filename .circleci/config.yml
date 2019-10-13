@@ -100,10 +100,11 @@ workflows:
           requires:
             - checkout
       - docs:
-          reuiqred:
+          requires:
             - checkout
       - release:
           requires:
             - build
             - test
             - lint
+            - docs
