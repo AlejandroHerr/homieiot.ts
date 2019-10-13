@@ -26,10 +26,7 @@ const addNodeUseCase = async ({ device, nodeProps, homiePublisher }: AddNodeUseC
     return Result.fail(addResult.error);
   }
 
-  const publishResult = await Promise.all([
-    homiePublisher.publishNodeUpdate(device),
-    homiePublisher.publisNode(node),
-  ]).then(results => Result.combine(results));
+  const publishResult = await homiePublisher.publishNode(device, node);
 
   if (publishResult.failed()) {
     return Result.fail(publishResult.error);

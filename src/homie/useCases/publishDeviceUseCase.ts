@@ -1,8 +1,8 @@
 import Result from '../../core/logic/Result';
 
 import Device from '../domain/Device';
-import HomiePublisher from '../services/HomiePublisher';
 import DevicePropsDTO from '../dto/DevicePropsDTO';
+import HomiePublisher from '../services/HomiePublisher';
 
 interface PublishDeviceUseCaseDTO {
   deviceProps: DevicePropsDTO;

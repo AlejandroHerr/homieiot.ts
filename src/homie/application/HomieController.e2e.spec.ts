@@ -1,11 +1,12 @@
 import waitForExpect from 'wait-for-expect';
 import { AsyncMqttClient } from 'async-mqtt';
 
-import HomieController from './HomieController';
+import ApplicationError from '../../core/application/ApplicationError';
 import asyncConnect from '../../core/infrastructure/asyncConnect';
 import setupMqttMessageSpy from '../../tests/setupMqttMessageSpy';
+
+import HomieController from './HomieController';
 import DeviceController from './DeviceController';
-import ApplicationError from '../../core/application/ApplicationError';
 
 const mqttOptions = {
   host: process.env.MQTT_HOST as string,
@@ -43,8 +44,7 @@ describe('homie/application/HomieController', () => {
         expect(mqttMessageSpy).toHaveBeenCalledWith(`homie/${deviceProps.deviceId}/$state`, 'ready');
       });
 
-      // @ts-ignore
-      await homieController.homiePublisher.disconnect(deviceProps);
+      await deviceController.homiePublisher.disconnect(deviceController.device);
     });
 
     it('when a device is creation failes, then it should throw an error', () => {

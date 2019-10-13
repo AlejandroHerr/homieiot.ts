@@ -3,9 +3,9 @@ import ApplicationError from '../../core/application/ApplicationError';
 import Device from '../domain/Device';
 import NodePropsDTO from '../dto/NodePropsDTO';
 import HomiePublisher from '../services/HomiePublisher';
-import updateStateUseCase from '../useCases/updateStateUseCase';
 import addNodeUseCase from '../useCases/addNodeUseCase';
-import disconnectUseCase from '../useCases/disconnectUseCase';
+import disconnectDeviceUseCase from '../useCases/disconnectDeviceUseCase';
+import setDeviceStateUseCase from '../useCases/setDeviceStateUseCase';
 
 export default class DeviceController {
   readonly device: Device;
@@ -17,8 +17,8 @@ export default class DeviceController {
     this.homiePublisher = homiePublisher;
   }
 
-  async updateState(state: Device['state']): Promise<this> {
-    const result = await updateStateUseCase({ device: this.device, homiePublisher: this.homiePublisher, state });
+  async setState(state: Device['state']): Promise<this> {
+    const result = await setDeviceStateUseCase({ device: this.device, homiePublisher: this.homiePublisher, state });
 
     if (result.failed()) {
       throw ApplicationError.create(result.error);
@@ -38,7 +38,7 @@ export default class DeviceController {
   }
 
   async disconnect(): Promise<this> {
-    const result = await disconnectUseCase({ device: this.device, homiePublisher: this.homiePublisher });
+    const result = await disconnectDeviceUseCase({ device: this.device, homiePublisher: this.homiePublisher });
 
     if (result.failed()) {
       throw ApplicationError.create(result.error);

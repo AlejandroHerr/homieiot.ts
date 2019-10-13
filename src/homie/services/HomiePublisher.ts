@@ -75,32 +75,18 @@ export default class HomiePublisher {
       .catch((error: Error) => Result.fail<void>(error.message));
   }
 
-  async publishNodeUpdate(device: Device): Promise<Result<void>> {
+  async publishNode(device: Device, node: Node): Promise<Result<void>> {
     const connection = this.mqttConnectionManager.getConnection(device.deviceId);
 
     if (connection.failed()) {
       return Result.fail(connection.error);
     }
 
-    const mqttMessage = deviceMapper.nodesToMqtt(device);
-
-    return (connection.value as MqttClient)
-      .publish(mqttMessage.topic, mqttMessage.message, { qos: 1, retain: true })
-      .then(() => Result.ok<void>())
-      .catch((error: Error) => Result.fail<void>(error.message));
-  }
-
-  async publisNode(node: Node): Promise<Result<void>> {
-    const connection = this.mqttConnectionManager.getConnection(node.deviceId);
-
-    if (connection.failed()) {
-      return Result.fail(connection.error);
-    }
-
-    const mqttMessages = nodeMapper.toMqtt(node);
+    const nodesMqttMessage = deviceMapper.nodesToMqtt(device);
+    const nodeMqttMessages = nodeMapper.toMqtt(node);
 
     const results = await Promise.all(
-      mqttMessages.map(mqttMessage =>
+      [...nodeMqttMessages, nodesMqttMessage].map(mqttMessage =>
         (connection.value as MqttClient)
           .publish(mqttMessage.topic, mqttMessage.message, { qos: 1, retain: true })
           .then(response => Result.ok(response))

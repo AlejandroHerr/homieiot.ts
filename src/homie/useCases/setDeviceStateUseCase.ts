@@ -3,17 +3,21 @@ import Result from '../../core/logic/Result';
 import Device from '../domain/Device';
 import HomiePublisher from '../services/HomiePublisher';
 
-interface UpdateStateUseCaseDTO {
+interface SetDeviceStateUseCaseDTO {
   device: Device;
   state: Device['state'];
   homiePublisher: HomiePublisher;
 }
 
-const updateStateUseCase = async ({ device, state, homiePublisher }: UpdateStateUseCaseDTO): Promise<Result<void>> => {
-  const updateResult = device.setState(state);
+const setDeviceStateUseCase = async ({
+  device,
+  state,
+  homiePublisher,
+}: SetDeviceStateUseCaseDTO): Promise<Result<void>> => {
+  const setStateResult = device.setState(state);
 
-  if (updateResult.failed()) {
-    return Result.fail(updateResult.error);
+  if (setStateResult.failed()) {
+    return Result.fail(setStateResult.error);
   }
 
   const publishResult = await homiePublisher.publishStateUpdate(device);
@@ -25,4 +29,4 @@ const updateStateUseCase = async ({ device, state, homiePublisher }: UpdateState
   return Result.ok();
 };
 
-export default updateStateUseCase;
+export default setDeviceStateUseCase;

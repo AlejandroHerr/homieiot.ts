@@ -12,7 +12,7 @@
 
 • **extensions**: *string*
 
-*Defined in [homie/domain/Device.ts:19](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L19)*
+*Defined in [homie/domain/Device.ts:19](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/domain/Device.ts#L19)*
 
 ___
 
@@ -20,7 +20,7 @@ ___
 
 • **homie**: *string*
 
-*Defined in [homie/domain/Device.ts:15](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L15)*
+*Defined in [homie/domain/Device.ts:15](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/domain/Device.ts#L15)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **name**: *string*
 
-*Defined in [homie/domain/Device.ts:16](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L16)*
+*Defined in [homie/domain/Device.ts:16](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/domain/Device.ts#L16)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 • **nodes**: *[Node](../classes/node.md)[]*
 
-*Defined in [homie/domain/Device.ts:18](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L18)*
+*Defined in [homie/domain/Device.ts:18](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/domain/Device.ts#L18)*
 
 ___
 
@@ -44,4 +44,4 @@ ___
 
 • **state**: *"init" | "ready" | "disconnected" | "sleeping" | "lost" | "alert"*
 
-*Defined in [homie/domain/Device.ts:17](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/homie/domain/Device.ts#L17)*
+*Defined in [homie/domain/Device.ts:17](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/homie/domain/Device.ts#L17)*

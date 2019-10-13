@@ -10,7 +10,7 @@
 
 • **message**: *string*
 
-*Defined in [core/infrastructure/MqttMessage.ts:3](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/infrastructure/MqttMessage.ts#L3)*
+*Defined in [core/infrastructure/MqttMessage.ts:3](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/core/infrastructure/MqttMessage.ts#L3)*
 
 ___
 
@@ -18,4 +18,4 @@ ___
 
 • **topic**: *string*
 
-*Defined in [core/infrastructure/MqttMessage.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/infrastructure/MqttMessage.ts#L2)*
+*Defined in [core/infrastructure/MqttMessage.ts:2](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/core/infrastructure/MqttMessage.ts#L2)*

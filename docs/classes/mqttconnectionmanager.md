@@ -10,7 +10,7 @@
 
 \+ **new MqttConnectionManager**(`__namedParameters`: object): *[MqttConnectionManager](mqttconnectionmanager.md)*
 
-*Defined in [core/infrastructure/MqttConnectionManager.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/infrastructure/MqttConnectionManager.ts#L10)*
+*Defined in [core/infrastructure/MqttConnectionManager.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/core/infrastructure/MqttConnectionManager.ts#L10)*
 
 **Parameters:**
 
@@ -28,7 +28,7 @@ Name | Type |
 
 • **options**: *Partial‹[MqttClientOptions](../interfaces/mqttclientoptions.md)›*
 
-*Defined in [core/infrastructure/MqttConnectionManager.ts:8](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/infrastructure/MqttConnectionManager.ts#L8)*
+*Defined in [core/infrastructure/MqttConnectionManager.ts:8](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/core/infrastructure/MqttConnectionManager.ts#L8)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 • **store**: *Map‹string, [MqttClient](../interfaces/mqttclient.md)›* =  new Map()
 
-*Defined in [core/infrastructure/MqttConnectionManager.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/infrastructure/MqttConnectionManager.ts#L10)*
+*Defined in [core/infrastructure/MqttConnectionManager.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/core/infrastructure/MqttConnectionManager.ts#L10)*
 
 ## Methods
 
@@ -44,7 +44,7 @@ ___
 
 ▸ **createConnection**(`__namedParameters`: object): *Promise‹[Result](result.md)‹[MqttClient](../interfaces/mqttclient.md)››*
 
-*Defined in [core/infrastructure/MqttConnectionManager.ts:16](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/infrastructure/MqttConnectionManager.ts#L16)*
+*Defined in [core/infrastructure/MqttConnectionManager.ts:16](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/core/infrastructure/MqttConnectionManager.ts#L16)*
 
 **Parameters:**
 
@@ -63,7 +63,7 @@ ___
 
 ▸ **getConnection**(`id`: string): *[Result](result.md)‹[MqttClient](../interfaces/mqttclient.md)›*
 
-*Defined in [core/infrastructure/MqttConnectionManager.ts:40](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/infrastructure/MqttConnectionManager.ts#L40)*
+*Defined in [core/infrastructure/MqttConnectionManager.ts:40](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/core/infrastructure/MqttConnectionManager.ts#L40)*
 
 **Parameters:**
 
@@ -79,7 +79,7 @@ ___
 
 ▸ **hasConnection**(`deviceId`: string): *boolean*
 
-*Defined in [core/infrastructure/MqttConnectionManager.ts:36](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/infrastructure/MqttConnectionManager.ts#L36)*
+*Defined in [core/infrastructure/MqttConnectionManager.ts:36](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/core/infrastructure/MqttConnectionManager.ts#L36)*
 
 **Parameters:**
 
@@ -95,7 +95,7 @@ ___
 
 ▸ **removeConnection**(`id`: string): *[Result](result.md)‹[MqttClient](../interfaces/mqttclient.md)›*
 
-*Defined in [core/infrastructure/MqttConnectionManager.ts:48](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/infrastructure/MqttConnectionManager.ts#L48)*
+*Defined in [core/infrastructure/MqttConnectionManager.ts:48](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/core/infrastructure/MqttConnectionManager.ts#L48)*
 
 **Parameters:**
 
@@ -111,7 +111,7 @@ ___
 
 ▸ **create**(`__namedParameters`: object): *[MqttConnectionManager](mqttconnectionmanager.md)*
 
-*Defined in [core/infrastructure/MqttConnectionManager.ts:58](https://github.com/AlejandroHerr/homieiot.ts/blob/188cbb7/src/core/infrastructure/MqttConnectionManager.ts#L58)*
+*Defined in [core/infrastructure/MqttConnectionManager.ts:58](https://github.com/AlejandroHerr/homieiot.ts/blob/15259b3/src/core/infrastructure/MqttConnectionManager.ts#L58)*
 
 **Parameters:**
 

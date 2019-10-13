@@ -23,7 +23,7 @@
       "interfaces/datatypeprops",
       "interfaces/deviceprops",
       "interfaces/devicepropsdto",
-      "interfaces/disconnectusecasedto",
+      "interfaces/disconnectdeviceusecasedto",
       "interfaces/mqttclient",
       "interfaces/mqttclientoptions",
       "interfaces/mqttmessage",
@@ -38,7 +38,7 @@
       "interfaces/requiredpropertyprops",
       "interfaces/resultfail",
       "interfaces/resultok",
-      "interfaces/updatestateusecasedto",
+      "interfaces/setdevicestateusecasedto",
       "interfaces/valueobjectprops"
     ]
   }
