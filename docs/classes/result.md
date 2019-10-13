@@ -14,7 +14,7 @@
 
 \+ **new Result**(`__namedParameters`: object): *[Result](result.md)*
 
-*Defined in [core/logic/Result.ts:12](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/logic/Result.ts#L12)*
+*Defined in [core/logic/Result.ts:12](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/logic/Result.ts#L12)*
 
 **Parameters:**
 
@@ -33,7 +33,7 @@ Name | Type |
 
 • **error**? : *string | Error*
 
-*Defined in [core/logic/Result.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/logic/Result.ts#L10)*
+*Defined in [core/logic/Result.ts:10](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/logic/Result.ts#L10)*
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 • **value**? : *[T](undefined)*
 
-*Defined in [core/logic/Result.ts:12](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/logic/Result.ts#L12)*
+*Defined in [core/logic/Result.ts:12](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/logic/Result.ts#L12)*
 
 ## Methods
 
@@ -49,7 +49,7 @@ ___
 
 ▸ **failed**(): *boolean*
 
-*Defined in [core/logic/Result.ts:19](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/logic/Result.ts#L19)*
+*Defined in [core/logic/Result.ts:19](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/logic/Result.ts#L19)*
 
 **Returns:** *boolean*
 
@@ -59,7 +59,7 @@ ___
 
 ▸ **succeded**(): *boolean*
 
-*Defined in [core/logic/Result.ts:23](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/logic/Result.ts#L23)*
+*Defined in [core/logic/Result.ts:23](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/logic/Result.ts#L23)*
 
 **Returns:** *boolean*
 
@@ -69,7 +69,7 @@ ___
 
 ▸ **combine**(`results`: [Result](result.md)‹any›[]): *[Result](result.md)‹void›*
 
-*Defined in [core/logic/Result.ts:36](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/logic/Result.ts#L36)*
+*Defined in [core/logic/Result.ts:36](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/logic/Result.ts#L36)*
 
 **Parameters:**
 
@@ -85,7 +85,7 @@ ___
 
 ▸ **fail**<**S**>(`error`: string | Error): *[Result](result.md)‹S›*
 
-*Defined in [core/logic/Result.ts:31](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/logic/Result.ts#L31)*
+*Defined in [core/logic/Result.ts:31](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/logic/Result.ts#L31)*
 
 **Type parameters:**
 
@@ -105,7 +105,7 @@ ___
 
 ▸ **ok**<**S**>(`value?`: [S](undefined)): *[Result](result.md)‹S›*
 
-*Defined in [core/logic/Result.ts:27](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/core/logic/Result.ts#L27)*
+*Defined in [core/logic/Result.ts:27](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/core/logic/Result.ts#L27)*
 
 **Type parameters:**
 

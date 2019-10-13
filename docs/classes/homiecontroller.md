@@ -10,7 +10,7 @@
 
 \+ **new HomieController**(`__namedParameters`: object): *[HomieController](homiecontroller.md)*
 
-*Defined in [homie/application/HomieController.ts:14](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/application/HomieController.ts#L14)*
+*Defined in [homie/application/HomieController.ts:14](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/homie/application/HomieController.ts#L14)*
 
 **Parameters:**
 
@@ -28,7 +28,7 @@ Name | Type |
 
 • **homiePublisher**: *[HomiePublisher](homiepublisher.md)*
 
-*Defined in [homie/application/HomieController.ts:14](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/application/HomieController.ts#L14)*
+*Defined in [homie/application/HomieController.ts:14](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/homie/application/HomieController.ts#L14)*
 
 ## Methods
 
@@ -36,7 +36,7 @@ Name | Type |
 
 ▸ **createDevice**(`deviceProps`: [DevicePropsDTO](../interfaces/devicepropsdto.md)): *Promise‹[DeviceController](devicecontroller.md)›*
 
-*Defined in [homie/application/HomieController.ts:20](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/application/HomieController.ts#L20)*
+*Defined in [homie/application/HomieController.ts:20](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/homie/application/HomieController.ts#L20)*
 
 **Parameters:**
 
@@ -52,7 +52,7 @@ ___
 
 ▸ **create**(`__namedParameters`: object): *[HomieController](homiecontroller.md)*
 
-*Defined in [homie/application/HomieController.ts:32](https://github.com/AlejandroHerr/homieiot.ts/blob/5b71357/src/homie/application/HomieController.ts#L32)*
+*Defined in [homie/application/HomieController.ts:32](https://github.com/AlejandroHerr/homieiot.ts/blob/dacf39e/src/homie/application/HomieController.ts#L32)*
 
 **Parameters:**
 
