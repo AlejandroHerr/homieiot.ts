@@ -7,6 +7,8 @@ import addNodeUseCase from '../useCases/addNodeUseCase';
 import disconnectDeviceUseCase from '../useCases/disconnectDeviceUseCase';
 import setDeviceStateUseCase from '../useCases/setDeviceStateUseCase';
 
+import NodeController from './NodeController';
+
 export default class DeviceController {
   readonly device: Device;
 
@@ -45,6 +47,20 @@ export default class DeviceController {
     }
 
     return this;
+  }
+
+  hasNode(nodeId: string): boolean {
+    return this.device.nodes.some(node => node.nodeId === nodeId);
+  }
+
+  getNode(nodeId: string): NodeController {
+    const foundNode = this.device.nodes.find(node => node.nodeId === nodeId);
+
+    if (!foundNode) {
+      throw ApplicationError.create(`Node ${nodeId} not found in device ${this.device.id}`);
+    }
+
+    return NodeController.create({ node: foundNode, homiePublisher: this.homiePublisher });
   }
 
   static create({ device, homiePublisher }: { device: Device; homiePublisher: HomiePublisher }): DeviceController {
