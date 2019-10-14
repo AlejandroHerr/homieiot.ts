@@ -3,6 +3,9 @@ import Property from '../Property';
 import nodeSchema from './nodeSchema';
 
 describe('homie/domain/validation/nodeSchema', () => {
+  test('should validate against empty props', () => {
+    expect(nodeSchema.validate(undefined, { convert: false })).toHaveProperty('error', expect.any(Error));
+  });
   test('should validate the props', () => {
     expect(
       nodeSchema.validate(

@@ -1,6 +1,9 @@
 import datatypeSchema from './datatypeSchema';
 
 describe('homie/domain/validation/datatypeSchema', () => {
+  test('should validate against empty props', () => {
+    expect(datatypeSchema.validate(undefined, { convert: false })).toHaveProperty('error', expect.any(Error));
+  });
   test('should validate integer Datatype according to homie spec', () => {
     expect(datatypeSchema.validate({ datatype: 'integer' }, { convert: false })).not.toHaveProperty(
       'error',
