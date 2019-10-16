@@ -1,7 +1,8 @@
 import Joi from '@hapi/joi';
 
-import homieIdSchema from './homieIdSchema';
 import Property from '../Property';
+
+import homieIdSchema from './homieIdSchema';
 
 export default Joi.object({
   deviceId: homieIdSchema.required(),
@@ -19,4 +20,4 @@ export default Joi.object({
         .instance(Property),
     )
     .required(),
-});
+}).required();

@@ -1,7 +1,9 @@
 import Joi from '@hapi/joi';
+
+import Node from '../Node';
+
 import homieIdSchema from './homieIdSchema';
 import deviceStateSchema from './deviceStateSchema';
-import deviceNodeSchema from './deviceNodeSchema';
 
 export default Joi.object({
   deviceId: homieIdSchema.required(),
@@ -13,9 +15,13 @@ export default Joi.object({
     .required(),
   state: deviceStateSchema.required(),
   nodes: Joi.array()
-    .items(deviceNodeSchema)
+    .items(
+      Joi.object()
+        // @ts-ignore
+        .instance(Node),
+    )
     .required(),
   extensions: Joi.string()
     .allow('')
     .required(),
-});
+}).required();

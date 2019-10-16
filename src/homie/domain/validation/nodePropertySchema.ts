@@ -1,8 +1,8 @@
 import Joi from '@hapi/joi';
 
-import Node from '../Node';
+import Property from '../Property';
 
 export default Joi.object()
   // @ts-ignore
-  .instance(Node)
+  .instance(Property)
   .required();

@@ -3,6 +3,9 @@ import Datatype from '../Datatype';
 import propertySchema from './propertySchema';
 
 describe('homie/domain/validation/propertySchema', () => {
+  test('should validate against empty props', () => {
+    expect(propertySchema.validate(undefined, { convert: false })).toHaveProperty('error', expect.any(Error));
+  });
   test('should validate the props except value', () => {
     expect(
       propertySchema.validate(

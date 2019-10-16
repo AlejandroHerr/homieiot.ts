@@ -32,4 +32,4 @@ export default Joi.object({
   format: Joi.when('datatype', {
     switch: [integerOrFloatFormatSchema, colorFormatSchema, enumFormatSchema, booleanOrStringFormatSchema],
   }),
-});
+}).required();

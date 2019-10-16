@@ -1,11 +1,14 @@
 import MqttClient from '../../core/infrastructure/MqttClient';
 import Result from '../../core/logic/Result';
 
+import MqttConnectionManager from '../../core/infrastructure/MqttConnectionManager';
+
 import Device from '../domain/Device';
 import Node from '../domain/Node';
+import Property from '../domain/Property';
 import * as deviceMapper from '../mappers/deviceMapper';
 import * as nodeMapper from '../mappers/nodeMapper';
-import MqttConnectionManager from '../../core/infrastructure/MqttConnectionManager';
+import * as propertyMapper from '../mappers/propertyMapper';
 
 export default class HomiePublisher {
   private mqttConnectionManager: MqttConnectionManager;
@@ -85,19 +88,43 @@ export default class HomiePublisher {
     const nodesMqttMessage = deviceMapper.nodesToMqtt(device);
     const nodeMqttMessages = nodeMapper.toMqtt(node);
 
-    const results = await Promise.all(
+    const result = await Promise.all(
       [...nodeMqttMessages, nodesMqttMessage].map(mqttMessage =>
         (connection.value as MqttClient)
           .publish(mqttMessage.topic, mqttMessage.message, { qos: 1, retain: true })
           .then(response => Result.ok(response))
           .catch(error => Result.fail(error)),
       ),
-    );
+    ).then(results => Result.combine(results));
 
-    const resultError = results.find(result => result.failed());
+    if (result.failed()) {
+      return Result.fail(result.error);
+    }
 
-    if (resultError) {
-      return Result.fail(resultError.error as string);
+    return Result.ok();
+  }
+
+  async publishProperty(node: Node, property: Property): Promise<Result<void>> {
+    const connection = this.mqttConnectionManager.getConnection(node.deviceId);
+
+    if (connection.failed()) {
+      return Result.fail(connection.error);
+    }
+
+    const propertiesMqttMessage = nodeMapper.propertiesToMqtt(node);
+    const propertyMqttMessages = propertyMapper.toMqtt(property);
+
+    const result = await Promise.all(
+      [...propertyMqttMessages, propertiesMqttMessage].map(mqttMessage =>
+        (connection.value as MqttClient)
+          .publish(mqttMessage.topic, mqttMessage.message, { qos: 1, retain: true })
+          .then(response => Result.ok(response))
+          .catch(error => Result.fail(error)),
+      ),
+    ).then(results => Result.combine(results));
+
+    if (result.failed()) {
+      return Result.fail(result.error);
     }
 
     return Result.ok();

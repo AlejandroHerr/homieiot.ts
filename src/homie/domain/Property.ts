@@ -80,15 +80,15 @@ export default class Property extends Entity<PropertyProps> {
   }
 
   static create(propertyProps: RequiredPropertyProps & Partial<OptionalNodeProps>): Result<Property> {
-    const propsOrValue = propertySchema.validate({ ...defaultProps, ...propertyProps }, { convert: false });
+    const proprOrError = propertySchema.validate({ ...defaultProps, ...propertyProps }, { convert: false });
 
-    if (propsOrValue.error) {
-      return Result.fail(propsOrValue.error);
+    if (proprOrError.error) {
+      return Result.fail(proprOrError.error);
     }
 
     if (propertyProps.value !== undefined) {
-      const valueValidationResult = propertyValueSchema(propsOrValue.value.datatype).validate(
-        propsOrValue.value.value,
+      const valueValidationResult = propertyValueSchema(proprOrError.value.datatype).validate(
+        proprOrError.value.value,
         {
           convert: false,
         },
@@ -99,8 +99,8 @@ export default class Property extends Entity<PropertyProps> {
       }
     }
 
-    const id = generateUUID(propsOrValue.value);
+    const id = generateUUID(proprOrError.value);
 
-    return Result.ok<Property>(new Property(propsOrValue.value, id));
+    return Result.ok<Property>(new Property(proprOrError.value, id));
   }
 }

@@ -2,6 +2,9 @@
 import MqttMessage from '../../core/infrastructure/MqttMessage';
 
 import Node from '../domain/Node';
+import Property from '../domain/Property';
+
+const parseProperties = (properties: Property[]): string => properties.map(({ propertyId }) => propertyId).join(',');
 
 export const toMqtt = (node: Node): MqttMessage[] => {
   const baseTopic = `homie/${node.id}`;
@@ -16,7 +19,16 @@ export const toMqtt = (node: Node): MqttMessage[] => {
     },
     {
       topic: `${baseTopic}/$properties`,
-      message: `${node.properties.map(({ propertyId }) => propertyId).join(',')}`,
+      message: parseProperties(node.properties),
     },
   ];
+};
+
+export const propertiesToMqtt = (node: Node): MqttMessage => {
+  const baseTopic = `homie/${node.id}`;
+
+  return {
+    topic: `${baseTopic}/$properties`,
+    message: parseProperties(node.properties),
+  };
 };

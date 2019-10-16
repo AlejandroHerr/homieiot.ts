@@ -54,6 +54,14 @@ export default class Device extends Entity<DeviceProps> {
     return this.props.extensions;
   }
 
+  getNode(nodeId: string): Node | undefined {
+    return this.nodes.find(node => node.nodeId === nodeId);
+  }
+
+  hasNode(nodeId: string): boolean {
+    return this.nodes.some(node => node.nodeId === nodeId);
+  }
+
   addNode(node: Node): Result<void> {
     const validationResult = deviceNodeSchema.validate(node, { convert: false });
 
@@ -61,7 +69,7 @@ export default class Device extends Entity<DeviceProps> {
       return Result.fail(validationResult.error);
     }
 
-    if (this.nodes.some(({ id }) => node.id === id)) {
+    if (this.hasNode(node.nodeId)) {
       return Result.fail(`Node ${node.id} already exists in ${this.deviceId}`);
     }
 

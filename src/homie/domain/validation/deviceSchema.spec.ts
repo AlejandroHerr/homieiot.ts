@@ -3,6 +3,9 @@ import Node from '../Node';
 import deviceSchema from './deviceSchema';
 
 describe('homie/domain/validation/deviceSchema', () => {
+  test('should validate against empty props', () => {
+    expect(deviceSchema.validate(undefined, { convert: false })).toHaveProperty('error', expect.any(Error));
+  });
   test('should validate the props', () => {
     expect(
       deviceSchema.validate(

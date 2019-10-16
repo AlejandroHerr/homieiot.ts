@@ -17,4 +17,4 @@ export default Joi.object({
   retained: Joi.boolean().required(),
   unit: Joi.string(),
   value: Joi.any(),
-});
+}).required();
