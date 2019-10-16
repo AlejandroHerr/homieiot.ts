@@ -17,12 +17,12 @@ export default class Datatype extends ValueObject<DatatypeProps> {
   }
 
   static create(props: DatatypeProps): Result<Datatype> {
-    const validationResult = datatypeSchema.validate(props, { convert: false });
+    const propsOrError = datatypeSchema.validate(props, { convert: false });
 
-    if (validationResult.error) {
-      return Result.fail(validationResult.error);
+    if (propsOrError.error) {
+      return Result.fail(propsOrError.error);
     }
 
-    return Result.ok(new Datatype(props));
+    return Result.ok(new Datatype(propsOrError.value));
   }
 }

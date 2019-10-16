@@ -4,6 +4,7 @@ import Result from '../../core/logic/Result';
 import generateUUID from './generateUUID';
 import Property from './Property';
 import nodeSchema from './validation/nodeSchema';
+import nodePropertySchema from './validation/nodePropertySchema';
 
 interface RequiredNodeProps {
   deviceId: string;
@@ -43,6 +44,30 @@ export default class Node extends Entity<NodeProps> {
 
   get properties(): Property[] {
     return this.props.properties;
+  }
+
+  getProperty(propertyId: string): Property | undefined {
+    return this.properties.find(property => property.propertyId === propertyId);
+  }
+
+  hasProperty(propertyId: string): boolean {
+    return this.properties.some(property => property.propertyId === propertyId);
+  }
+
+  addProperty(property: Property): Result<void> {
+    const validationResult = nodePropertySchema.validate(property, { convert: false });
+
+    if (validationResult.error) {
+      return Result.fail(validationResult.error);
+    }
+
+    if (this.properties.some(({ id }) => property.id === id)) {
+      return Result.fail(`Property ${property.id} already exists in Node ${this.id}`);
+    }
+
+    this.properties.push(property);
+
+    return Result.ok();
   }
 
   static create(nodeProps: RequiredNodeProps & Partial<OptionalNodeProps>): Result<Node> {
