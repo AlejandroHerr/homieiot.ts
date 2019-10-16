@@ -4,7 +4,10 @@ import Node from '../domain/Node';
 import PropertyPropsDTO from '../dto/PropertyPropsDTO';
 import HomiePublisher from '../services/HomiePublisher';
 import addPropertyUseCase from '../useCases/addPropertyUseCase';
+import getPropertyFromNodeUseCase from '../useCases/getPropertyFromNodeUseCase';
 import nodeHasPropertyUseCase from '../useCases/nodeHasPropertyUseCase';
+
+import PropertyController from './PropertyController';
 
 export default class NodeController {
   readonly node: Node;
@@ -18,6 +21,16 @@ export default class NodeController {
 
   hasProperty(propertyId: string): boolean {
     return nodeHasPropertyUseCase({ node: this.node, propertyId });
+  }
+
+  getProperty(propertyId: string): PropertyController {
+    const foundProperty = getPropertyFromNodeUseCase({ node: this.node, propertyId });
+
+    if (!foundProperty) {
+      throw ApplicationError.create(`Property ${propertyId} not found in node ${this.node.id}`);
+    }
+
+    return PropertyController.create({ property: foundProperty, homiePublisher: this.homiePublisher });
   }
 
   async addProperty(propertyProps: PropertyPropsDTO): Promise<this> {

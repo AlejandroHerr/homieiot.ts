@@ -46,12 +46,12 @@ export default class Node extends Entity<NodeProps> {
     return this.props.properties;
   }
 
-  getProperty(propertyId: string): Property | undefined {
-    return this.properties.find(property => property.propertyId === propertyId);
-  }
-
   hasProperty(propertyId: string): boolean {
     return this.properties.some(property => property.propertyId === propertyId);
+  }
+
+  getProperty(propertyId: string): Property | undefined {
+    return this.properties.find(property => property.propertyId === propertyId);
   }
 
   addProperty(property: Property): Result<void> {

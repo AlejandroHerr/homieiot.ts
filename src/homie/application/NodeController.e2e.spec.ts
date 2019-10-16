@@ -1,6 +1,7 @@
 import waitForExpect from 'wait-for-expect';
 import { AsyncMqttClient } from 'async-mqtt';
 
+import ApplicationError from '../../core/application/ApplicationError';
 import asyncConnect from '../../core/infrastructure/asyncConnect';
 import setupMqttMessageSpy from '../../tests/setupMqttMessageSpy';
 
@@ -9,6 +10,7 @@ import PropertyPropsDTO from '../dto/PropertyPropsDTO';
 
 import HomieController from './HomieController';
 import NodeController from './NodeController';
+import PropertyController from './PropertyController';
 
 const mqttOptions = {
   host: process.env.MQTT_HOST as string,
@@ -134,30 +136,88 @@ describe('homie/application/NodeController', () => {
       });
     });
 
-    describe('hasNode', () => {
-      it('should return a boolean indicating if the Device has a node with the specified nodeId', async () => {
-        const nodeController = await HomieController.create({ mqttOptions })
-          .createDevice({
-            deviceId: 'node-controller--has-property--test',
-          })
-          .then(async deviceController => {
-            const nodeId = 'node0';
-            await deviceController.addNode({ nodeId });
-            return deviceController.getNode(nodeId);
-          });
+    it('should add and publish the new Node', async () => {
+      const nodeProps = { deviceId: 'node-controller--add-property--fail-test', nodeId: 'node0' };
+      const propertyProps0: PropertyPropsDTO = {
+        propertyId: 'PROP0',
+        name: 'Test Prop 0',
+        datatype: { datatype: 'boolean' },
+        value: false,
+      };
 
-        const propertyProps0: PropertyPropsDTO = {
-          propertyId: 'property0',
-          name: 'Test Property 0',
-          datatype: { datatype: 'integer' },
-        };
+      const { nodeController } = await setup(nodeProps);
 
-        expect(nodeController.hasProperty(propertyProps0.propertyId)).toBeFalsy();
+      expect(nodeController.addProperty(propertyProps0)).rejects.toBeInstanceOf(ApplicationError);
+    });
+  });
 
-        await nodeController.addProperty(propertyProps0);
+  describe('hasNode', () => {
+    it('should return a boolean indicating if the Device has a node with the specified nodeId', async () => {
+      const nodeController = await HomieController.create({ mqttOptions })
+        .createDevice({
+          deviceId: 'node-controller--has-property--test',
+        })
+        .then(async deviceController => {
+          const nodeId = 'node0';
+          await deviceController.addNode({ nodeId });
+          return deviceController.getNode(nodeId);
+        });
 
-        expect(nodeController.hasProperty(propertyProps0.propertyId)).toBeTruthy();
-      });
+      const propertyProps0: PropertyPropsDTO = {
+        propertyId: 'property0',
+        name: 'Test Property 0',
+        datatype: { datatype: 'integer' },
+      };
+
+      expect(nodeController.hasProperty(propertyProps0.propertyId)).toBeFalsy();
+
+      await nodeController.addProperty(propertyProps0);
+
+      expect(nodeController.hasProperty(propertyProps0.propertyId)).toBeTruthy();
+    });
+  });
+
+  describe('getProperty', () => {
+    it('should return a PropertyController for the Property found by its propertyId', async () => {
+      const nodeController = await HomieController.create({ mqttOptions })
+        .createDevice({
+          deviceId: 'node-controller--has-property--test',
+        })
+        .then(async deviceController => {
+          const nodeId = 'node0';
+          await deviceController.addNode({ nodeId });
+          return deviceController.getNode(nodeId);
+        });
+
+      const propertyProps0: PropertyPropsDTO = {
+        propertyId: 'property0',
+        name: 'Test Property 0',
+        datatype: { datatype: 'integer' },
+      };
+
+      await nodeController.addProperty(propertyProps0);
+
+      const propertyController = nodeController.getProperty(propertyProps0.propertyId);
+
+      expect(propertyController).toBeInstanceOf(PropertyController);
+      expect(propertyController.homiePublisher).toBe(nodeController.homiePublisher);
+      expect(propertyController.property).toBe(
+        nodeController.node.properties.find(property => property.propertyId === propertyProps0.propertyId),
+      );
+    });
+
+    it('should throw an ApplicationError if the property does not exist', async () => {
+      const nodeController = await HomieController.create({ mqttOptions })
+        .createDevice({
+          deviceId: 'node-controller--has-property--test',
+        })
+        .then(async deviceController => {
+          const nodeId = 'node0';
+          await deviceController.addNode({ nodeId });
+          return deviceController.getNode(nodeId);
+        });
+
+      expect(() => nodeController.getProperty('property0')).toThrow(ApplicationError);
     });
   });
 });
