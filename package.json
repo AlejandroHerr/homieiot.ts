@@ -16,13 +16,18 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@hapi/joi": "^16.1.6",
+    "@types/hapi__joi": "^16",
     "@types/node": "^12.7.5",
+    "async-mqtt": "^2.4.2",
+    "mqtt": "^3.0.0",
     "typescript": "^3.6.3"
   },
   "devDependencies": {
     "@types/jest": "24.0.19",
     "@typescript-eslint/eslint-plugin": "2.4.0",
     "@typescript-eslint/parser": "2.4.0",
+    "codecov": "^3.6.1",
     "cz-conventional-changelog": "3.0.2",
     "eslint": "6.5.1",
     "eslint-config-airbnb-typescript": "5.0.0",
@@ -35,7 +40,10 @@
     "prettier": "1.18.2",
     "semantic-release": "15.13.24",
     "ts-jest": "24.1.0",
-    "ts-node": "8.4.1"
+    "ts-node": "8.4.1",
+    "typedoc": "^0.15.0",
+    "typedoc-plugin-markdown": "^2.2.10",
+    "wait-for-expect": "^3.0.0"
   },
   "scripts": {
     "build": "run-s clean && run-p build:*",
@@ -43,6 +51,10 @@
     "build:module": "tsc -p tsconfig.module.json",
     "clean": "rm -rf dist",
     "commit": "git-cz",
+    "docs": "run-s docs:clean docs:generate docs:config",
+    "docs:clean": "rm -rf ./docs/.vuepress",
+    "docs:config": "sh ./scripts/configureVuepress.sh",
+    "docs:generate": "typedoc ./src/index.ts",
     "dev": "sh ./scripts/dev.sh",
     "lint": "eslint ./src --ext ts",
     "test": "sh ./scripts/test.sh",

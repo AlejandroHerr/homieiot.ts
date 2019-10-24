@@ -9,11 +9,10 @@ services:
     depends_on:
       - mqtt_server
     environment:
-      - NODE_ENV=testing
+      - NODE_ENV=development
       - MQTT_PORT=1883
       - MQTT_PROTOCOL=mqtt
       - MQTT_HOST=mqtt_server
-      - MQTT_CLIENT_NAME=homie_dev
     tty: true
     working_dir: /homie
     volumes:

@@ -1,1 +1,4 @@
-process.exit(0);
+/* eslint-disable import/prefer-default-export */
+import { HomieController } from './homie';
+
+export { HomieController };

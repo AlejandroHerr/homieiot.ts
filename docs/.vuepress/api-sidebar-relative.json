@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Classes",
+    "children": [
+      "classes/applicationerror",
+      "classes/datatype",
+      "classes/device",
+      "classes/devicecontroller",
+      "classes/entity",
+      "classes/homiecontroller",
+      "classes/homiepublisher",
+      "classes/mqttconnectionmanager",
+      "classes/node",
+      "classes/property",
+      "classes/result",
+      "classes/valueobject"
+    ]
+  },
+  {
+    "title": "Interfaces",
+    "children": [
+      "interfaces/addnodeusecasedto",
+      "interfaces/datatypeprops",
+      "interfaces/deviceprops",
+      "interfaces/devicepropsdto",
+      "interfaces/disconnectdeviceusecasedto",
+      "interfaces/mqttclient",
+      "interfaces/mqttclientoptions",
+      "interfaces/mqttmessage",
+      "interfaces/nodeprops",
+      "interfaces/nodepropsdto",
+      "interfaces/optionaldeviceprops",
+      "interfaces/optionalnodeprops",
+      "interfaces/propertyprops",
+      "interfaces/publishdeviceusecasedto",
+      "interfaces/requireddeviceprops",
+      "interfaces/requirednodeprops",
+      "interfaces/requiredpropertyprops",
+      "interfaces/resultfail",
+      "interfaces/resultok",
+      "interfaces/setdevicestateusecasedto",
+      "interfaces/valueobjectprops"
+    ]
+  }
+]
