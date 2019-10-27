@@ -1,14 +1,11 @@
 import MqttClient from '../../core/infrastructure/MqttClient';
-import Result from '../../core/logic/Result';
-
 import MqttConnectionManager from '../../core/infrastructure/MqttConnectionManager';
+import Result from '../../core/logic/Result';
 
 import Device from '../domain/Device';
 import Node from '../domain/Node';
 import Property from '../domain/Property';
-import * as deviceMapper from '../mappers/deviceMapper';
-import * as nodeMapper from '../mappers/nodeMapper';
-import * as propertyMapper from '../mappers/propertyMapper';
+import { deviceMapper, nodeMapper, propertyMapper } from '../mappers';
 
 export default class HomiePublisher {
   private mqttConnectionManager: MqttConnectionManager;
@@ -17,13 +14,13 @@ export default class HomiePublisher {
     this.mqttConnectionManager = mqttConnectionManager;
   }
 
-  private async createConnection(device: Device): Promise<Result<MqttClient>> {
-    if (this.mqttConnectionManager.hasConnection(device.deviceId)) {
-      return this.mqttConnectionManager.getConnection(device.deviceId);
+  private async createClient(device: Device): Promise<Result<MqttClient>> {
+    if (this.mqttConnectionManager.hasClient(device.deviceId)) {
+      return this.mqttConnectionManager.getClient(device.deviceId);
     }
 
-    return this.mqttConnectionManager.createConnection({
-      id: device.deviceId,
+    return this.mqttConnectionManager.createClient({
+      clientId: device.deviceId,
       options: {
         clientId: device.deviceId,
         will: {
@@ -37,110 +34,121 @@ export default class HomiePublisher {
   }
 
   async publishDevice(device: Device): Promise<Result<void>> {
-    const connection = await this.createConnection(device);
+    const clientOrError = await this.createClient(device);
 
-    if (connection.failed()) {
-      return Result.fail(connection.error);
+    if (clientOrError.failed()) {
+      return Result.fail(clientOrError.error);
     }
 
-    const mqttMessages = deviceMapper.toMqtt(device);
+    const client = clientOrError.value as MqttClient;
 
-    const results = await Promise.all(
-      mqttMessages.map(mqttMessage =>
-        (connection.value as MqttClient)
-          .publish(mqttMessage.topic, mqttMessage.message, { qos: 1, retain: true })
-          .then(response => Result.ok(response))
-          .catch(error => Result.fail(error)),
-      ),
+    const mqttMessages = deviceMapper.toMqttMessages(device);
+
+    return Promise.all(mqttMessages.map(mqttMessage => client.publish(mqttMessage.topic, mqttMessage.message))).then(
+      () => Result.ok(),
     );
-
-    const resultError = results.find(result => result.failed());
-
-    if (resultError) {
-      return Result.fail(resultError.error as string);
-    }
-
-    return Result.ok();
   }
 
-  async publishStateUpdate(device: Device): Promise<Result<void>> {
-    const connection = this.mqttConnectionManager.getConnection(device.deviceId);
+  async publishDeviceState(device: Device): Promise<Result<void>> {
+    const clientOrError = this.mqttConnectionManager.getClient(device.deviceId);
 
-    if (connection.failed()) {
-      return Result.fail(connection.error);
+    if (clientOrError.failed()) {
+      return Result.fail(clientOrError.error);
     }
 
-    const mqttMessage = deviceMapper.stateToMqtt(device);
+    const client = clientOrError.value as MqttClient;
 
-    return (connection.value as MqttClient)
-      .publish(mqttMessage.topic, mqttMessage.message, { qos: 1, retain: true })
-      .then(() => Result.ok<void>())
-      .catch((error: Error) => Result.fail<void>(error.message));
+    const mqttMessage = deviceMapper.stateToMqttMessage(device);
+
+    return client.publish(mqttMessage.topic, mqttMessage.message).then(() => Result.ok());
   }
 
-  async publishNode(device: Device, node: Node): Promise<Result<void>> {
-    const connection = this.mqttConnectionManager.getConnection(device.deviceId);
+  async publishDeviceNodes(device: Device): Promise<Result<void>> {
+    const clientOrError = this.mqttConnectionManager.getClient(device.deviceId);
 
-    if (connection.failed()) {
-      return Result.fail(connection.error);
+    if (clientOrError.failed()) {
+      return Result.fail(clientOrError.error);
     }
 
-    const nodesMqttMessage = deviceMapper.nodesToMqtt(device);
-    const nodeMqttMessages = nodeMapper.toMqtt(node);
+    const client = clientOrError.value as MqttClient;
 
-    const result = await Promise.all(
-      [...nodeMqttMessages, nodesMqttMessage].map(mqttMessage =>
-        (connection.value as MqttClient)
-          .publish(mqttMessage.topic, mqttMessage.message, { qos: 1, retain: true })
-          .then(response => Result.ok(response))
-          .catch(error => Result.fail(error)),
+    const mqttMessage = deviceMapper.nodesToMqttMessage(device);
+
+    return client.publish(mqttMessage.topic, mqttMessage.message).then(() => Result.ok());
+  }
+
+  async publishNode(node: Node): Promise<Result<void>> {
+    const clientOrError = this.mqttConnectionManager.getClient(node.deviceId);
+
+    if (clientOrError.failed()) {
+      return Result.fail(clientOrError.error);
+    }
+
+    const client = clientOrError.value as MqttClient;
+
+    const mqttMessages = nodeMapper.toMqttMessages(node);
+
+    return Promise.all(mqttMessages.map(mqttMessage => client.publish(mqttMessage.topic, mqttMessage.message))).then(
+      () => Result.ok(),
+    );
+  }
+
+  async publisNodeProperties(node: Node): Promise<Result<void>> {
+    const clientOrError = this.mqttConnectionManager.getClient(node.deviceId);
+
+    if (clientOrError.failed()) {
+      return Result.fail(clientOrError.error);
+    }
+
+    const client = clientOrError.value as MqttClient;
+
+    const mqttMessage = nodeMapper.propertiesToMqttMessage(node);
+
+    return client.publish(mqttMessage.topic, mqttMessage.message).then(() => Result.ok());
+  }
+
+  async publishProperty(property: Property): Promise<Result<void>> {
+    const clientOrError = this.mqttConnectionManager.getClient(property.deviceId);
+
+    if (clientOrError.failed()) {
+      return Result.fail(clientOrError.error);
+    }
+
+    const client = clientOrError.value as MqttClient;
+
+    const mqttMessages = propertyMapper.toMqttMessages(property);
+
+    return Promise.all(
+      mqttMessages.map(mqttMessage =>
+        client.publish(mqttMessage.topic, mqttMessage.message, {
+          qos: 1,
+          ...mqttMessage.options,
+        }),
       ),
-    ).then(results => Result.combine(results));
-
-    if (result.failed()) {
-      return Result.fail(result.error);
-    }
-
-    return Result.ok();
+    ).then(() => Result.ok());
   }
 
-  async publishProperty(node: Node, property: Property): Promise<Result<void>> {
-    const connection = this.mqttConnectionManager.getConnection(node.deviceId);
+  async publishPropertyValue(property: Property): Promise<Result<void>> {
+    const clientOrError = this.mqttConnectionManager.getClient(property.deviceId);
 
-    if (connection.failed()) {
-      return Result.fail(connection.error);
+    if (clientOrError.failed()) {
+      return Result.fail(clientOrError.error);
     }
 
-    const propertiesMqttMessage = nodeMapper.propertiesToMqtt(node);
-    const propertyMqttMessages = propertyMapper.toMqtt(property);
+    const client = clientOrError.value as MqttClient;
 
-    const result = await Promise.all(
-      [...propertyMqttMessages, propertiesMqttMessage].map(mqttMessage =>
-        (connection.value as MqttClient)
-          .publish(mqttMessage.topic, mqttMessage.message, { qos: 1, retain: true })
-          .then(response => Result.ok(response))
-          .catch(error => Result.fail(error)),
-      ),
-    ).then(results => Result.combine(results));
+    const mqttMessage = propertyMapper.valueToMqttMessage(property);
 
-    if (result.failed()) {
-      return Result.fail(result.error);
-    }
-
-    return Result.ok();
+    return client
+      .publish(mqttMessage.topic, mqttMessage.message, {
+        qos: 1,
+        ...mqttMessage.options,
+      })
+      .then(() => Result.ok());
   }
 
   async disconnect(device: Device): Promise<Result<void>> {
-    const connection = this.mqttConnectionManager.getConnection(device.deviceId);
-
-    if (connection.failed()) {
-      return Result.fail(connection.error);
-    }
-
-    return (connection.value as MqttClient)
-      .end()
-      .then(() => Result.ok<void>())
-      .catch((error: Error) => Result.fail<void>(error.message));
+    return this.mqttConnectionManager.removeClient(device.deviceId);
   }
 
   static create({ mqttConnectionManager }: { mqttConnectionManager: MqttConnectionManager }): HomiePublisher {

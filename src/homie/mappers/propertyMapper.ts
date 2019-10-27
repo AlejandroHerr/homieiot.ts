@@ -1,25 +1,25 @@
-/* eslint-disable import/prefer-default-export */
 import MqttMessage from '../../core/infrastructure/MqttMessage';
 
 import Property from '../domain/Property';
 
+import * as datatypeMapper from './datatypeMapper';
+
 const parseBoolean = (boolean: boolean): string => (boolean && 'true') || 'false';
-const parseValue = (value: string | number | boolean): string =>
-  value === true || value === false ? parseBoolean(value) : `${value}`;
-const parseFormat = (format: string | string[] | number[]): string =>
-  Array.isArray(format) ? `${format.join(',')}` : `${format}`;
 
-export const toMqtt = (property: Property): MqttMessage[] => {
-  const baseTopic = `homie/${property.id}`;
+export const valueToMqttMessage = (property: Property): MqttMessage => ({
+  topic: `homie/${property.deviceId}/${property.nodeId}/${property.propertyId}`,
+  message: `${property.value}`,
+  options: { retain: property.retained },
+});
 
-  const requiredTopics = [
+export const toMqttMessages = (property: Property): MqttMessage[] => {
+  const baseTopic = `homie/${property.deviceId}/${property.nodeId}/${property.propertyId}`;
+
+  const messages = [
+    valueToMqttMessage(property),
     {
       topic: `${baseTopic}/$name`,
       message: `${property.name}`,
-    },
-    {
-      topic: `${baseTopic}/$datatype`,
-      message: property.datatype.datatype,
     },
     {
       topic: `${baseTopic}/$settable`,
@@ -29,19 +29,8 @@ export const toMqtt = (property: Property): MqttMessage[] => {
       topic: `${baseTopic}/$retained`,
       message: parseBoolean(property.retained),
     },
-    {
-      topic: baseTopic,
-      message: parseValue(property.value),
-    },
+    ...datatypeMapper.toMqttMessages(property.datatype, baseTopic),
   ];
 
-  const requiredTopicsWithFormat = property.datatype.format
-    ? requiredTopics.concat({ topic: `${baseTopic}/$format`, message: parseFormat(property.datatype.format) })
-    : requiredTopics;
-
-  const requiredTopicsWithUnit = property.unit
-    ? requiredTopicsWithFormat.concat({ topic: `${baseTopic}/$unit`, message: parseFormat(property.unit) })
-    : requiredTopicsWithFormat;
-
-  return requiredTopicsWithUnit;
+  return property.unit ? messages.concat({ topic: `${baseTopic}/$unit`, message: property.unit }) : messages;
 };

@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import MqttMessage from '../../core/infrastructure/MqttMessage';
 
 import Node from '../domain/Node';
@@ -6,8 +5,17 @@ import Property from '../domain/Property';
 
 const parseProperties = (properties: Property[]): string => properties.map(({ propertyId }) => propertyId).join(',');
 
-export const toMqtt = (node: Node): MqttMessage[] => {
-  const baseTopic = `homie/${node.id}`;
+export const propertiesToMqttMessage = (node: Node): MqttMessage => {
+  const baseTopic = `homie/${node.deviceId}/${node.nodeId}`;
+
+  return {
+    topic: `${baseTopic}/$properties`,
+    message: parseProperties(node.properties),
+  };
+};
+
+export const toMqttMessages = (node: Node): MqttMessage[] => {
+  const baseTopic = `homie/${node.deviceId}/${node.nodeId}`;
   return [
     {
       topic: `${baseTopic}/$name`,
@@ -22,13 +30,4 @@ export const toMqtt = (node: Node): MqttMessage[] => {
       message: parseProperties(node.properties),
     },
   ];
-};
-
-export const propertiesToMqtt = (node: Node): MqttMessage => {
-  const baseTopic = `homie/${node.id}`;
-
-  return {
-    topic: `${baseTopic}/$properties`,
-    message: parseProperties(node.properties),
-  };
 };

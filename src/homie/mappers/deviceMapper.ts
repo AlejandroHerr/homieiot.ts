@@ -1,10 +1,21 @@
-/* eslint-disable import/prefer-default-export */
 import MqttMessage from '../../core/infrastructure/MqttMessage';
 
 import Device from '../domain/Device';
+import Node from '../domain/Node';
 
-export const toMqtt = (device: Device): MqttMessage[] => {
-  const baseTopic = `homie/${device.id}`;
+const parseNodes = (node: Node[]): string => node.map(({ nodeId }) => nodeId).join(',');
+
+export const nodesToMqttMessage = (device: Device): MqttMessage => {
+  const baseTopic = `homie/${device.deviceId}`;
+
+  return {
+    topic: `${baseTopic}/$nodes`,
+    message: parseNodes(device.nodes),
+  };
+};
+
+export const toMqttMessages = (device: Device): MqttMessage[] => {
+  const baseTopic = `homie/${device.deviceId}`;
 
   return [
     {
@@ -21,7 +32,7 @@ export const toMqtt = (device: Device): MqttMessage[] => {
     },
     {
       topic: `${baseTopic}/$nodes`,
-      message: `${device.nodes.map(({ nodeId }) => nodeId).join(',')}`,
+      message: parseNodes(device.nodes),
     },
     {
       topic: `${baseTopic}/$extensions`,
@@ -30,20 +41,11 @@ export const toMqtt = (device: Device): MqttMessage[] => {
   ];
 };
 
-export const stateToMqtt = (device: Device): MqttMessage => {
+export const stateToMqttMessage = (device: Device): MqttMessage => {
   const baseTopic = `homie/${device.id}`;
 
   return {
     topic: `${baseTopic}/$state`,
-    message: device.state.toString(),
-  };
-};
-
-export const nodesToMqtt = (device: Device): MqttMessage => {
-  const baseTopic = `homie/${device.id}`;
-
-  return {
-    topic: `${baseTopic}/$nodes`,
-    message: `${device.nodes.map(node => node.nodeId).join(',')}`,
+    message: device.state,
   };
 };
