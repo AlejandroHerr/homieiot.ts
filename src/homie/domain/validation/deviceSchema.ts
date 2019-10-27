@@ -15,11 +15,7 @@ export default Joi.object({
     .required(),
   state: deviceStateSchema.required(),
   nodes: Joi.array()
-    .items(
-      Joi.object()
-        // @ts-ignore
-        .instance(Node),
-    )
+    .items(Joi.object().instance(Node))
     .required(),
   extensions: Joi.string()
     .allow('')

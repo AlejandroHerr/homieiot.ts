@@ -10,7 +10,6 @@ export default Joi.object({
     .allow('')
     .required(),
   datatype: Joi.object()
-    // @ts-ignore
     .instance(Datatype)
     .required(),
   settable: Joi.boolean().required(),

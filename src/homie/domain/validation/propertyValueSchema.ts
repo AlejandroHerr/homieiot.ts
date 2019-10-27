@@ -26,9 +26,12 @@ const getSchemaForDatatype = (datatype: Datatype): Joi.Schema => {
   }
 
   if (datatype.datatype === 'enum') {
-    return Joi.any()
-      .valid(...(datatype.format as any[]))
-      .required();
+    return (
+      Joi.any()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .valid(...(datatype.format as any[]))
+        .required()
+    );
   }
 
   if (datatype.datatype === 'color') {

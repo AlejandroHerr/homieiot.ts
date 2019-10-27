@@ -14,10 +14,6 @@ export default Joi.object({
     .allow('')
     .required(),
   properties: Joi.array()
-    .items(
-      Joi.object()
-        // @ts-ignore
-        .instance(Property),
-    )
+    .items(Joi.object().instance(Property))
     .required(),
 }).required();
