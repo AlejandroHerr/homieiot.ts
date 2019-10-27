@@ -1,61 +1,86 @@
 import Result from '../logic/Result';
 
-import asyncConnect from './asyncConnect';
 import MqttClient from './MqttClient';
 import MqttClientOptions from './MqttClientOptions';
+import { MqttConnect } from './MqttConnect';
 
 export default class MqttConnectionManager {
-  public readonly options: Partial<MqttClientOptions>;
+  private mqttConnect: MqttConnect;
+
+  private options: Partial<MqttClientOptions>;
 
   private store: Map<string, MqttClient> = new Map();
 
-  constructor({ options }: { options: Partial<MqttClientOptions> }) {
+  constructor({ mqttConnect, options }: { mqttConnect: MqttConnect; options: Partial<MqttClientOptions> }) {
+    this.mqttConnect = mqttConnect;
     this.options = options;
   }
 
-  async createConnection({ id, options }: { id: string; options?: MqttClientOptions }): Promise<Result<MqttClient>> {
-    if (this.store.has(id)) {
-      return Result.fail(`Connection ${id} already exists`);
+  async createClient({
+    clientId,
+    options,
+  }: {
+    clientId: string;
+    options?: MqttClientOptions;
+  }): Promise<Result<MqttClient>> {
+    if (this.store.has(clientId)) {
+      return Result.fail(`Client ${clientId} already exists`);
     }
 
-    try {
-      const mqttClient = await asyncConnect({
-        ...this.options,
-        ...options,
-        clientId: id,
-      });
+    const mqttClient = await this.mqttConnect({
+      ...this.options,
+      ...options,
+      clientId,
+    });
 
-      this.store.set(id, mqttClient);
+    this.store.set(clientId, mqttClient);
 
-      return Result.ok(mqttClient);
-    } catch (error) {
-      return Result.fail(error);
-    }
+    return Result.ok(mqttClient);
   }
 
-  hasConnection(deviceId: string): boolean {
-    return this.store.has(deviceId);
+  hasClient(clientId: string): boolean {
+    return this.store.has(clientId);
   }
 
-  getConnection(id: string): Result<MqttClient> {
-    if (!this.hasConnection(id)) {
-      return Result.fail(`Connection ${id} does not exist`);
+  getClient(clientId: string): Result<MqttClient> {
+    if (!this.hasClient(clientId)) {
+      return Result.fail(`Client ${clientId} does not exist`);
     }
 
-    return Result.ok(this.store.get(id) as MqttClient);
+    const client = this.store.get(clientId) as MqttClient;
+
+    return Result.ok(client);
   }
 
-  removeConnection(id: string): Result<MqttClient> {
-    if (!this.hasConnection(id)) {
-      return Result.fail(`Connection ${id} does not exist`);
+  async removeClient(clientId: string): Promise<Result<void>> {
+    const connectionOrError = this.getClient(clientId);
+
+    if (connectionOrError.failed()) {
+      return Result.fail(connectionOrError.error);
     }
 
-    this.store.delete(id);
+    const client = connectionOrError.value as MqttClient;
+
+    await client.end();
+
+    this.store.delete(clientId);
 
     return Result.ok();
   }
 
-  static create({ options }: { options: Partial<MqttClientOptions> }): MqttConnectionManager {
-    return new MqttConnectionManager({ options });
+  async removeAllClients(): Promise<Result<void>> {
+    return Promise.all([...this.store.keys()].map(clientId => this.removeClient(clientId))).then(results =>
+      Result.combine(results),
+    );
+  }
+
+  static create({
+    mqttConnect,
+    options,
+  }: {
+    options: Partial<MqttClientOptions>;
+    mqttConnect: MqttConnect;
+  }): MqttConnectionManager {
+    return new MqttConnectionManager({ mqttConnect, options });
   }
 }
