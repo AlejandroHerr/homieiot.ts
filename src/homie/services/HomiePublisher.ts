@@ -93,7 +93,7 @@ export default class HomiePublisher {
     );
   }
 
-  async publisNodeProperties(node: Node): Promise<Result<void>> {
+  async publishNodeProperties(node: Node): Promise<Result<void>> {
     const clientOrError = this.mqttConnectionManager.getClient(node.deviceId);
 
     if (clientOrError.failed()) {

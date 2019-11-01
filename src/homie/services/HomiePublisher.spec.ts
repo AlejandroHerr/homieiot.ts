@@ -245,7 +245,7 @@ describe('homie/services/HomiePublisher', () => {
       expect(listener).not.toHaveBeenCalled();
     });
   });
-  describe('publisNodeProperties', () => {
+  describe('publishNodeProperties', () => {
     it("should publish the message for nodes's properties", async () => {
       const node = Node.create({
         deviceId: generateTestId(),
@@ -270,7 +270,7 @@ describe('homie/services/HomiePublisher', () => {
 
       const homiePublisher = new HomiePublisher({ mqttConnectionManager });
 
-      const result = await homiePublisher.publisNodeProperties(node);
+      const result = await homiePublisher.publishNodeProperties(node);
 
       expect(result.succeded()).toBeTruthy();
 
@@ -292,7 +292,7 @@ describe('homie/services/HomiePublisher', () => {
 
       const homiePublisher = new HomiePublisher({ mqttConnectionManager });
 
-      const result = await homiePublisher.publisNodeProperties(node);
+      const result = await homiePublisher.publishNodeProperties(node);
 
       expect(result.failed()).toBeTruthy();
       expect(result).toHaveProperty('error', `Client ${node.deviceId} does not exist`);
