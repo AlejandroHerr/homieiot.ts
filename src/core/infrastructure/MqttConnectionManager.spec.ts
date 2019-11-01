@@ -1,8 +1,8 @@
 import { AsyncClient } from 'async-mqtt';
 
 import asyncConnect from './asyncConnect';
-import MqttClient from './MqttClient';
 import MqttConnectionManager from './MqttConnectionManager';
+import MqttError from './MqttError';
 
 const options = {
   host: process.env.MQTT_HOST as string,
@@ -30,12 +30,11 @@ describe('core/infraestructure/MqttConnectionManager', () => {
 
       const clientId = generateClientId();
 
-      const result = await mqttConnectionManager.createClient({ clientId });
+      const client = await mqttConnectionManager.createClient({ clientId });
 
-      expect(result.succeded()).toBeTruthy();
-      expect(result).toHaveProperty('value', expect.any(AsyncClient));
+      expect(client).toBeInstanceOf(AsyncClient);
       expect(mqttConnectionManager.hasClient(clientId)).toBeTruthy();
-      expect(mqttConnectionManager.getClient(clientId)).toHaveProperty('value', expect.any(AsyncClient));
+      expect(mqttConnectionManager.getClient(clientId)).toBeInstanceOf(AsyncClient);
     });
     it('should return a failed result when the client already exists', async () => {
       const mqttConnectionManager = new MqttConnectionManager({
@@ -46,10 +45,10 @@ describe('core/infraestructure/MqttConnectionManager', () => {
       const clientId = generateClientId();
 
       await mqttConnectionManager.createClient({ clientId });
-      const result = await mqttConnectionManager.createClient({ clientId });
 
-      expect(result.failed()).toBeTruthy();
-      expect(result).toHaveProperty('error', `Client ${clientId} already exists`);
+      expect(mqttConnectionManager.createClient({ clientId })).rejects.toEqual(
+        MqttError.create(`Client ${clientId} already exists`),
+      );
     });
   });
   describe('removeClient', () => {
@@ -63,16 +62,17 @@ describe('core/infraestructure/MqttConnectionManager', () => {
 
       await mqttConnectionManager.createClient({ clientId });
 
-      const client = mqttConnectionManager.getClient(clientId).value as MqttClient;
+      const client = mqttConnectionManager.getClient(clientId);
 
-      const result = await mqttConnectionManager.removeClient(clientId);
+      await mqttConnectionManager.removeClient(clientId);
 
-      expect(result.succeded()).toBeTruthy();
       expect(client).toHaveProperty('connected', false);
       expect(mqttConnectionManager.hasClient(clientId)).toBeFalsy();
-      expect(mqttConnectionManager.getClient(clientId)).toHaveProperty('error', `Client ${clientId} does not exist`);
+      expect(() => mqttConnectionManager.getClient(clientId)).toThrow(
+        MqttError.create(`Client ${clientId} does not exist`),
+      );
     });
-    it('should return a failed result when the client does not exist', async () => {
+    it('should return a failed result when the client does not exist', () => {
       const mqttConnectionManager = new MqttConnectionManager({
         mqttConnect: asyncConnect,
         options,
@@ -80,10 +80,9 @@ describe('core/infraestructure/MqttConnectionManager', () => {
 
       const clientId = generateClientId();
 
-      const result = await mqttConnectionManager.removeClient(clientId);
-
-      expect(result.failed()).toBeTruthy();
-      expect(result.error).toBe(`Client ${clientId} does not exist`);
+      expect(mqttConnectionManager.removeClient(clientId)).rejects.toEqual(
+        MqttError.create(`Client ${clientId} does not exist`),
+      );
     });
   });
   describe('removeAllClients', () => {
@@ -101,18 +100,21 @@ describe('core/infraestructure/MqttConnectionManager', () => {
         mqttConnectionManager.createClient({ clientId: client1Id }),
       ]);
 
-      const client0 = mqttConnectionManager.getClient(client0Id).value as MqttClient;
-      const client1 = mqttConnectionManager.getClient(client1Id).value as MqttClient;
+      const client0 = mqttConnectionManager.getClient(client0Id);
+      const client1 = mqttConnectionManager.getClient(client1Id);
 
-      const result = await mqttConnectionManager.removeAllClients();
+      await mqttConnectionManager.removeAllClients();
 
-      expect(result.succeded()).toBeTruthy();
       expect(client0).toHaveProperty('connected', false);
       expect(mqttConnectionManager.hasClient(client0Id)).toBeFalsy();
-      expect(mqttConnectionManager.getClient(client0Id)).toHaveProperty('error', `Client ${client0Id} does not exist`);
+      expect(() => mqttConnectionManager.getClient(client0Id)).toThrowError(
+        MqttError.create(`Client ${client0Id} does not exist`),
+      );
       expect(client1).toHaveProperty('connected', false);
       expect(mqttConnectionManager.hasClient(client1Id)).toBeFalsy();
-      expect(mqttConnectionManager.getClient(client1Id)).toHaveProperty('error', `Client ${client1Id} does not exist`);
+      expect(() => mqttConnectionManager.getClient(client1Id)).toThrowError(
+        MqttError.create(`Client ${client1Id} does not exist`),
+      );
     });
   });
 });

@@ -3,6 +3,7 @@ import Result from '../logic/Result';
 import MqttClient from './MqttClient';
 import MqttClientOptions from './MqttClientOptions';
 import { MqttConnect } from './MqttConnect';
+import MqttError from './MqttError';
 
 export default class MqttConnectionManager {
   private mqttConnect: MqttConnect;
@@ -16,15 +17,9 @@ export default class MqttConnectionManager {
     this.options = options;
   }
 
-  async createClient({
-    clientId,
-    options,
-  }: {
-    clientId: string;
-    options?: MqttClientOptions;
-  }): Promise<Result<MqttClient>> {
+  async createClient({ clientId, options }: { clientId: string; options?: MqttClientOptions }): Promise<MqttClient> {
     if (this.store.has(clientId)) {
-      return Result.fail(`Client ${clientId} already exists`);
+      throw MqttError.create(`Client ${clientId} already exists`);
     }
 
     const mqttClient = await this.mqttConnect({
@@ -35,43 +30,48 @@ export default class MqttConnectionManager {
 
     this.store.set(clientId, mqttClient);
 
-    return Result.ok(mqttClient);
+    return mqttClient;
   }
 
   hasClient(clientId: string): boolean {
     return this.store.has(clientId);
   }
 
-  getClient(clientId: string): Result<MqttClient> {
+  getClient(clientId: string): MqttClient {
     if (!this.hasClient(clientId)) {
-      return Result.fail(`Client ${clientId} does not exist`);
+      throw MqttError.create(`Client ${clientId} does not exist`);
     }
 
     const client = this.store.get(clientId) as MqttClient;
 
-    return Result.ok(client);
+    return client;
   }
 
-  async removeClient(clientId: string): Promise<Result<void>> {
-    const connectionOrError = this.getClient(clientId);
-
-    if (connectionOrError.failed()) {
-      return Result.fail(connectionOrError.error);
-    }
-
-    const client = connectionOrError.value as MqttClient;
+  async removeClient(clientId: string): Promise<this> {
+    const client = this.getClient(clientId);
 
     await client.end();
 
     this.store.delete(clientId);
 
-    return Result.ok();
+    return this;
   }
 
-  async removeAllClients(): Promise<Result<void>> {
-    return Promise.all([...this.store.keys()].map(clientId => this.removeClient(clientId))).then(results =>
-      Result.combine(results),
-    );
+  async removeAllClients(): Promise<this> {
+    const clientIds = [...this.store.keys()];
+    const result = await Promise.all(
+      clientIds.map(clientId =>
+        this.removeClient(clientId)
+          .then(mqttConnectionManager => Result.ok(mqttConnectionManager))
+          .catch(error => Result.fail(error)),
+      ),
+    ).then(results => Result.combine(results));
+
+    if (result.failed()) {
+      throw result.error;
+    }
+
+    return this;
   }
 
   static create({
