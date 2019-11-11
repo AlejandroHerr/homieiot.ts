@@ -35,7 +35,7 @@
     "prettier": "1.18.2",
     "semantic-release": "15.13.30",
     "ts-jest": "24.1.0",
-    "ts-node": "8.4.1"
+    "ts-node": "8.5.0"
   },
   "scripts": {
     "build": "run-s clean && run-p build:*",
